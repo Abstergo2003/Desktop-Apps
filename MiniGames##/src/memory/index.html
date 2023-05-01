@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <audio id="background" src="../sounds/game.mp3" loop="true"></audio>
+    <audio id="button" src="../sounds/button.wav"></audio>
+    <audio src="../sounds/success.mp3" id="succes"></audio>
+    <div class="game"></div>
+    <div class="controls">
+        <div class="container">
+            <div class="data" id="score"><b>Score:00</b></div>
+            <div class="data" id="round"><b>Round:1</b></div>
+            <div class="data" id="time"><b>Time: <span id="seconds">00</span>:<span id="miliseconds"></span></b></div>
+            <div class="data" id="highscore"><b>Highscore:00</b></div>
+            <div class="button" id="reset"><b>Reset</b></div>
+            <div class="button" id="back"><b>Back</b></div>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>

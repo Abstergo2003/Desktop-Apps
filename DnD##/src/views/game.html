@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <script>
+        const ROOM_ID = "<%= roomId %>"
+    </script>
+    <script defer src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script src="script.js" defer></script>
+    <script src="events.js" defer></script>
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+    <div id="mobs">
+    </div>
+    <div id="map">
+        <div id="holder"></div>
+    </div>
+    <div id="options">
+        <div id="add-enemy" class="button">Add enemy</div>
+        <div id="deal-damage" class="button">Attack</div>
+        <div id="move" class="button">Move</div>
+        <div id="dice" class="button">Dice</div>
+        <div class="button" id="set-map-trigger">Set Map</div>
+        <div class="button" id="addplayer">Add player</div>
+        <div class="button" id="heal">Heal</div>
+        <div class="button" id="joinLink">Join Link</div>
+        <div class="button" id="save">Save</div>
+        <div class="button" id="exit">Exit</div>
+        <div class="chat">
+            <div class="msg-container"></div>
+            <div class="new-msg">
+                <textarea class="msg-content"></textarea>
+                <div id="send"><img src="img/tick.svg"></div>
+            </div>
+        </div>
+    </div>
+    <div id="add-enemy-form">
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" id="name"></td>
+            </tr>
+            <tr>
+                <td>Type:</td>
+                <td><select id="type">
+                    <option value="">Choose Type:</option>
+                    <option value="warewolf">warewolf</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td>MaxHP:</td>
+                <td><input type="number" id="maxhp"></td>
+            </tr>
+            <tr>
+                <td>AC:</td>
+                <td><input type="number" id="ac"></td>
+            </tr>
+            <tr>
+                <td>CurrentHP:</td>
+                <td><input type="number" id="currenthp"></td>
+            </tr>
+            <tr>
+                <td>x:</td>
+                <td><input type="number" id="pos-x"></td>
+            </tr>
+            <tr>
+                <td>y:</td>
+                <td><input type="number" id="pos-y"></td>
+            </tr>
+        </table>
+        <div id="add-enemy-ok">Add</div>
+        <div id="add-enemy-cancell">x</div>
+    </div>
+    <div id="attack-form">
+        <select id="enemy-to-attack"></select>
+        <div id="HitDices">
+            <img src="img/d4.png">
+            <img src="img/d6.png">
+            <img src="img/d8.png">
+            <img src="img/d10.png">
+            <img src="img/d12.png">
+            <img src="img/d20.png">
+            <input type="number" value="0" id="Hd4">
+            <input type="number" value="0" id="Hd6">
+            <input type="number" value="0" id="Hd8">
+            <input type="number" value="0" id="Hd10">
+            <input type="number" value="0" id="Hd12">
+            <input type="number" value="0" id="Hd20">
+        </div>
+        <div id="DamageDices">
+            <img src="img/d4.png">
+            <img src="img/d6.png">
+            <img src="img/d8.png">
+            <img src="img/d10.png">
+            <img src="img/d12.png">
+            <img src="img/d20.png">
+            <input type="number" value="0" id="Dd4">
+            <input type="number" value="0" id="Dd6">
+            <input type="number" value="0" id="Dd8">
+            <input type="number" value="0" id="Dd10">
+            <input type="number" value="0" id="Dd12">
+            <input type="number" value="0" id="Dd20">
+        </div>
+        <div id="attack-enemy-ok" class="button">Attack</div>
+        <div id="attack-enemy-cancell" class="close-button">x</div>
+    </div>
+    <div id="JustDice">
+        <div id="JDices">
+            <img src="img/d4.png">
+            <img src="img/d6.png">
+            <img src="img/d8.png">
+            <img src="img/d10.png">
+            <img src="img/d12.png">
+            <img src="img/d20.png">
+            <input type="number" value="0" id="Jd4">
+            <input type="number" value="0" id="Jd6">
+            <input type="number" value="0" id="Jd8">
+            <input type="number" value="0" id="Jd10">
+            <input type="number" value="0" id="Jd12">
+            <input type="number" value="0" id="Jd20">
+        </div>
+        <div id="just-dice-ok" class="button">Dice</div>
+        <div id="just-dice-cancell" class="close-button">x</div>
+    </div>
+    <div id="sqrnetbuttons">
+        <div id="sqrnet-ok"></div>
+        <div id="sqrnet-cancell">x</div>
+    </div>
+    <div id="set-image">
+        <span>Enter path</span><br>
+        <div id="set-map-ok" class="button">SET</div><div id="set-map-close" class="close-button">x</div>
+    </div>
+    <div id="margin">
+        <input type="range" value="50" id="marL">
+        <input type="range" value="50" id="marT">
+        <div class="button" id="margin-ok">Ok</div>
+    </div>
+    <div id="add-player-form">
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" id="nameP"></td>
+            </tr>
+            <tr>
+                <td>MaxHP:</td>
+                <td><input type="number" id="maxhpP"></td>
+            </tr>
+            <tr>
+                <td>AC:</td>
+                <td><input type="number" id="acP"></td>
+            </tr>
+            <tr>
+                <td>CurrentHP:</td>
+                <td><input type="number" id="currenthpP"></td>
+            </tr>
+            <tr>
+                <td>x:</td>
+                <td><input type="number" id="pos-xP"></td>
+            </tr>
+            <tr>
+                <td>y:</td>
+                <td><input type="number" id="pos-yP"></td>
+            </tr>
+        </table>
+        <div id="add-player-ok" class="button">Add</div>
+        <div id="add-player-cancell" class="close-button">x</div>
+    </div>
+    <div id="healForm">
+        <select id="healingSelect">
+            <option value="">Select Target</option>
+        </select><br>
+        <input type="number" id="healAm"><br>
+        <div class="button" id="healOK">OK</div><br>
+        <div class="cancellButton">X</div>
+    </div>
+    <div id="info">Hanks</div>
+    <script src="UI.js"></script>
+</body>
+</html>

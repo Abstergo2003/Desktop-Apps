@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <audio id="background" src="sounds/menu.mp3" loop="true"></audio>
+    <audio id="button" src="sounds/button.wav"></audio>
+    <div class="container">
+        <h1><b>Choose your game</b></h1>
+        <a href="snake/index.html"><div class="button" id="snake"><b>Snake</b></div></a>
+        <a href="memory/index.html"><div class="button" id="memory"><b>Memory</b></div></a>
+        <a href="hide_and_seek/index.html"><div class="button" id="hide-n-seek"><b>Hide & Seek</b></div></a>
+        <a href="options/index.html"><div class="button" id="options"><b>Options</b></div></a>
+        <a href="credentials/index.html"><div class="button" id="credentials"><b>Credentials</b></div></a>
+    </div>
+    <script>
+        var audio = document.getElementById('background')
+        var button = document.getElementById('button')
+        if(!localStorage.getItem('isFirst')) {
+           var obj = {
+                'snake' : 0,
+                "memory" : 0,
+                "hideNseek" : 50
+            }
+            var options = {
+                "volume" : 50,
+                "language": 'en',
+            }
+            audio.volume = options.volume/100
+            button.volume = options.volume/100
+            window.electron.ipcRenderer.send('askPath');
+            window.electron.ipcRenderer.on('userData',function (event, userData) {
+                window.fs.writeFile(userData + '/highscores.json', JSON.stringify(obj), function (err) {
+                    if (err) throw err;
+                    console.log('Highscores file is created successfully.');
+                })
+                window.fs.writeFile(userData + '/options.json', JSON.stringify(options), function (err) {
+                    if (err) throw err;
+                    console.log('Options file is created successfully.');
+                })
+                localStorage.setItem('isFirst', true)
+            })
+        } else {
+            window.electron.ipcRenderer.send('askPath')
+            window.electron.ipcRenderer.on('userData',function (event, userData) {
+                var options =  JSON.parse(window.fs.readFileSync(userData + '\\options.json'), 'utf-8')
+                audio.volume = options.volume/100
+                button.volume = options.volume/100
+            })
+        }
+        audio.play()
+        document.addEventListener('click', ()=>{
+            button.play()
+        })
+    </script>
+</body>
+</html>

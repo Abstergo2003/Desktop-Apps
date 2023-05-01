@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character</title>
+    <link rel="stylesheet" href="showCharacter.css">
+</head>
+<body>
+    <div class="const">
+        <input spellcheck="false" type="text" id="const-name" style="float: left;
+            height: 12vh !important;
+            width: 50% !important;
+            color: #58A4B0 !important;
+            font-size: 10vh !important;
+            margin: 0 !important;
+            text-align: center !important;
+            line-height: 12vh !important;">
+        <table>
+            <tr class="data-block">
+                <td><input type="text" id="const-class" style="width: 40%"><input type="number" id="const-level" style="width: 20%"></td>
+                <td ><input type="text" id="const-background"></td>
+            </tr>
+            <tr class="subtitles">
+                <td>Class & Level</td>
+                <td>Background</td>
+            </tr>
+            <tr class="data-block">
+                <td><input type="text" id="const-race"></td>
+                <td><input type="text" id="const-alignment"></td>
+            </tr>
+            <tr class="subtitles">
+                <td>Race</td>
+                <td>Alignment</td>
+            </tr>
+        </table>
+    </div>
+    <div class="slider" tag="frame">
+        <div style="width: 320vw; height: 100%; transition: all .3s ease-in-out;" id="slider" tag="actualSlider">
+            <div class="slide" id="slide1">
+                <div class="attributeCon">
+                    <div class="attribute">
+                        <span>STRENGTH</span><br>
+                        <input type="number" class="attAdded" id="attributes-main-added-strength"><br>
+                        <input type="number" class="attBase" id="attributes-main-base-strength">
+                    </div>
+                    <div class="attribute">
+                        <span>DEXTERITY</span><br>
+                        <input type="number" class="attAdded"
+                        id="attributes-main-added-dexterity"><br>
+                        <input type="number" class="attBase"
+                        id="attributes-main-base-dexterity">
+                    </div>
+                    <div class="attribute">
+                        <span>CONSTITUTION</span><br>
+                        <input type="number" class="attAdded"
+                        id="attributes-main-added-constitution"><br>
+                        <input type="number" class="attBase" 
+                        id="attributes-main-base-constitution">
+                    </div>
+                    <div class="attribute">
+                        <span>INTELLIGENCE</span><br>
+                        <input type="number" class="attAdded"
+                        id="attributes-main-added-intelligence"><br>
+                        <input type="number" class="attBase" id="attributes-main-base-intelligence">
+                    </div>
+                    <div class="attribute">
+                        <span>WISDOM</span><br>
+                        <input type="number" class="attAdded"
+                        id="attributes-main-added-wisdom"><br>
+                        <input type="number" class="attBase" id="attributes-main-base-wisdom">
+                    </div>
+                    <div class="attribute">
+                        <span>CHARISMA</span><br>
+                        <input type="number" class="attAdded"
+                        id="attributes-main-added-charisma"><br>
+                        <input type="number" class="attBase" id="attributes-main-base-charisma">
+                    </div>
+                </div>
+            <div style="width: 90%; margin-left: 5%; height: 70vh">
+                <div class="HPCon">
+                    <div class="attribute2">
+                        <input type="number" id="attributes-stuff-ac"><br>
+                        AC
+                    </div>
+                    <div class="attribute2">
+                        <input type="number" id="attributes-stuff-initiative"><br>
+                        INIT
+                    </div>
+                    <div class="attribute2">
+                        <input type="number" id="attributes-stuff-speed"><br>
+                        SPEED
+                    </div>
+                    <div class="hp"><span>MAX HP:</span><input type="number" id="attributes-stuff-maxHP"></div>
+                    <div class="hp"><span>CURRENT HP:</span><input type="number" id="attributes-stuff-currentHP"></div>
+                    <div class="saves">
+                        <span style="margin-left: 10px">Succeses:</span><input type="checkbox" class="checkboxS"><input type="checkbox" class="checkboxS"><input type="checkbox" class="checkboxS"><br>
+                        <span style="margin-left: 10px">Failures:</span> <input type="checkbox" class="checkboxF"><input type="checkbox" class="checkboxF"><input type="checkbox" class="checkboxF">
+                    </div>
+                </div>
+                <div id="proficiency">
+                    <input type="number" id="attributes-proficiencyBonus">
+                    PROFICIENCY
+                </div>
+                <div class="bonuses">
+                    SAVING THROWS
+                    <div class="throw">STRENGTH<input type="number" id="attributes-savingThrows-strength"></div>
+                    <div class="throw">DEXTERITY<input type="number" id="attributes-savingThrows-dexterity"></div>
+                    <div class="throw">CONSTITUTION<input type="number" id="attributes-savingThrows-constitution"></div>
+                    <div class="throw">INTELLIGENCE<input type="number" id="attributes-savingThrows-intelligence"></div>
+                    <div class="throw">WISDOM<input type="number" id="attributes-savingThrows-wisdom"></div>
+                    <div class="throw">CHARISMA<input type="number" id="attributes-savingThrows-charisma"></div>
+                    <br>
+                    <br>
+                    SKILLS
+                    <div class="throw">ACROBATICS<input type="number" id="attributes-skills-acrobatics"></div>
+                    <div class="throw">ANIMAL HANDLING<input type="number" id="attributes-skills-animal"></div>
+                    <div class="throw">ARCANA<input type="number" id="attributes-skills-arcana"></div>
+                    <div class="throw">ATHLETICS<input type="number" id="attributes-skills-athletics"></div>
+                    <div class="throw">DECEPTION<input type="number" id="attributes-skills-deception"></div>
+                    <div class="throw">HISTORY<input type="number" id="attributes-skills-history"></div>
+                    
+                </div>
+                <div id="wisdom">
+                    <input type="number" id="attributes-passiveWisdom"><br>
+                    WISDOM
+                </div>
+                <div class="bonuses" style="float: right !important;">
+                    <div class="throw">INSIGHT<input type="number" id="attributes-skills-insight"></div>
+                    <div class="throw">INTIMIDATION<input type="number" id="attributes-skills-intimidation"></div>
+                    <div class="throw">INVESTIGATION<input type="number" id="attributes-skills-investigation"></div>
+                    <div class="throw">MEDICINE<input type="number" id="attributes-skills-medicine"></div>
+                    <div class="throw">NATURE<input type="number" id="attributes-skills-nature"></div> 
+                    <div class="throw">PERCEPTION<input type="number" id="attributes-skills-perception"></div>
+                    <div class="throw">PERFORMANCE<input type="number" id="attributes-skills-performance"></div>
+                    <div class="throw">PERSUASION<input type="number" id="attributes-skills-persuasion"></div>
+                    <div class="throw">RELIGION<input type="number" id="attributes-skills-religion"></div>
+                    <div class="throw">SLEIGHT OF HAND<input type="number" id="attributes-skills-sleight"></div>
+                    <div class="throw">STEALTH<input type="number" id="attributes-skills-stealth"></div>
+                    <div class="throw">SURVIVAL<input type="number" id="attributes-skills-survival"></div>
+                </div>
+            </div>
+                
+            </div>
+            <div class="slide" id="slide2">
+                <div class="holder" id="weaponsCon">
+                    Weapons
+                    <div id="addWeapon">Add Weapon</div>
+                </div>
+                <div class="holder">
+                    Treasures<br>
+                    <div class="money" style="top: 5vh" id="equipment-treasures-money-cp">
+                        <div class="currency">CP</div> 
+                    </div>
+                    <div class="money" style="top: 15vh" id="equipment-treasures-money-sp">
+                        <div class="currency">SP</div> 
+                    </div>
+                    <div class="money" style="top: 25vh" id="equipment-treasures-money-ep">
+                        <div class="currency">EP</div> 
+                    </div>
+                    <div class="money" style="top: 35vh" id="equipment-treasures-money-gp">
+                        <div class="currency">GP</div> 
+                    </div>
+                    <div class="money" style="top: 45vh" id="equipment-treasures-money-pp">
+                        <div class="currency">PP</div> 
+                    </div>
+                    <textarea style="width: 200px; height: calc(60vh - 50px); border-left: 3px solid #1B1B1E;" spellcheck="false" id="equipment-treasures-other"></textarea>
+                </div>
+                <div class="holder">
+                    Equipmnet
+                    <textarea style="width: 280px; height: calc(60vh - 50px)" spellcheck="false" id="equipment-backpack"></textarea>
+                </div>
+            </div>
+            <div class="slide" id="slide3" style="color: #D8DBE2; height: calc(70vh - 10px) !important; padding-top: 10px;">
+                Features & Treats<br>
+                <textarea spellcheck="false" class="feats" id="features"></textarea>
+            </div>
+            <div class="slide" id="slide4">
+                <div class="holder" style="width: 30% !important">
+                    Character Apperance
+                    <textarea spellcheck="false" style="width: 90%; height: 90%; float: none !important;" id="characterDescription-appearance"></textarea>
+                </div>
+                <div class="holder" style="width: 50% !important">
+                    Background
+                    <textarea spellcheck="false" style="width: 90%; height: 90%; float: none !important;" id="characterDescription-background"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="indicator visible" id="in0"></div>
+    <div class="indicator" id="in1"></div>
+    <div class="indicator" id="in2"></div>
+    <div class="indicator" id="in3"></div>
+    <!--<div class="lineVer"></div>
+    <div class="lineHor"></div>-->
+    <div id="back" class="button" style="top: 2vh;content: url('img/back.svg');"></div>
+    <div id="save" class="button" style="transform: translateY(-50%); top: 50vh; content: url('img/save.svg');"></div>
+    <script src="showCharacter.js"></script>
+</body>
+</html>

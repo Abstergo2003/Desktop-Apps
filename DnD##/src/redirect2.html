@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face {
+  font-family: 'cestic';
+  src: url('Cestic-regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  font-family: 'cestic';
+  width: 100%;
+  background-color: #1B1B1E;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+}
+h1 {
+  color: #58A4B0;
+  width: 100%;
+  font-size: 10vh;
+  margin: 0;
+  margin-top: 30px;
+}
+.container {
+    width: 60%;
+    height: 40vh;
+    background-color: #58A4B0;
+    border-radius: 5px;
+    position: absolute;
+    top: 30vh;
+    left: 50%;
+    transform: translateX(-50%);
+}
+table {
+    height: 100%;
+    width: 100%;
+    font-size: 5vh;
+}
+input {
+    font-family: 'cestic';
+    height: 6vh;
+    width: 80%;
+    font-size: 5vh;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #1B1B1E;
+}
+.button {
+    position: absolute;
+    width: 30%;
+    height: 10vh;
+    border-radius: 5px;
+    left: 35%;
+    top: 80%;
+    font-size: 6vh;
+    color: #D8DBE2;
+    background-color: #373F51;
+    line-height: 10vh;
+    transition: all .3s ease-in-out;
+}
+.button:hover {
+  background-color: #58A4B0;
+  color: #373F51;
+}
+    </style>
+</head>
+<body>
+    <h1>Join Game</h1>
+    <div class="container">
+        <table>
+            <tr>
+                <td>Host ID:</td>
+                <td><input type="text" id="IntID"></td>
+            </tr>
+            <tr>
+                <td>Uniqe ID:</td>
+                <td><input type="text" id="UniqueID"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="button">Join</div>
+    <script>
+        const {writeFileSync} = window.fs
+        const {join} = window.path
+        const __dirname = window.path.dirname
+        const emptySave = {"const":{"name":"","topic":"","villain":"","localization":"","description":"","pathToIcon":""},"temp":{"mobs":[],"players":[],"path":undefined,"step":undefined,"marL":0,"marT":0},"logs":[]}
+        writeFileSync(join(__dirname, 'saveToLoad.json'), JSON.stringify(emptySave))
+        document.querySelector('.button').addEventListener('click', ()=>{
+            var IntID = document.getElementById('IntID').value
+            var UniqueID = document.getElementById('UniqueID').value
+            var URL = `http://${IntID}:3000/${UniqueID}`
+            window.location.href = URL
+        })
+    </script>
+</body>
+</html>

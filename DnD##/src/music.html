@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <audio id="background" loop="true"></audio>
+    <audio id="button" src="sounds/button.wav"></audio>
+    <script>
+        const __dirname = window.path.dirname
+        const {join} = window.path
+        const {readFileSync} = window.fs
+        const options = JSON.parse(readFileSync(__dirname+'/options.json', 'utf-8'))
+        var player = document.getElementById('background')
+        var button = document.getElementById('button')
+        const playMenu = () =>{   
+            player.src = __dirname+'/sounds/menu.mp3'
+            player.volume = options.volume/100
+            player.play()
+        }
+        const playGame = () =>{
+            console.log('playing game')
+            player.src = __dirname+'/sounds/game.mp3'
+            player.volume = options.volume/100
+            player.play()
+        }
+        const playButton = ()=>{
+            button.play()
+        }
+        window.electron.ipcRenderer.on('play-game', (uel)=>{
+            console.log('playing game')
+            playGame()
+        })
+        window.electron.ipcRenderer.on('play-menu', (uel)=>{
+            console.log('playing menu')
+            playMenu()
+        })
+        window.electron.ipcRenderer.on('button', (uel)=>{
+            console.log('playing button')
+            playButton()
+        })
+        playMenu()
+    </script>
+</body>
+</html>

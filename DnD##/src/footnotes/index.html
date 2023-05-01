@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CREDENTIALS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>CREDENTIALS</h1>
+    <div class="footnote"><a href="http://creativecommons.org/licenses/by/4.0/" target="_blank">Linea Iconset is distributed under CCBY license, and all work is atributted to Dario Fernando</a></div>
+    <div class="footnote"><a href="https://www.dndbeyond.com/classes" target="_blank">Class icons are created by Leonardo.ai with icons of dndBeyond.com as reference.</a></div>
+    <div class="footnote"><a href="https://leonardo.ai/" target="_blank">Creatures icons are created using Leonardo.ai with random image from internet as reference.</a></div>
+    <div class="footnote">Rest of icons are downloaded randomly from intenet and converted to svg, I am unable to provide creator</div>
+    <div class="footnote"><a href="https://www.dungeonmastersvault.com/pages/dnd/5e/character-builder">Character sheet is based on character sheet from dungeonmastersvault.com</a></div>
+    <div class="footnote"><a href="https://sharewareonsale.com/" target="_blank">I am not creator of the 'Cestic' font, it was Downloaded from sharewareonsale.com but the license was not attached.</a></div>
+    <div class="footnote" style="height: fit-content !important; line-height: 6vh;"><a href="https://www.free-stock-music.com/maxkomusic-medieval-fantasy.html" target="_blank">Music in game window:<br>
+        Medieval Fantasy by MaxKoMusic | https://maxkomusic.com/<br>
+        Music promoted by https://www.free-stock-music.com<br>
+        Creative Commons / Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)<br>
+        https://creativecommons.org/licenses/by-sa/3.0/deed.en_US<br>
+    </a></div>
+    <div class="footnote" style="height: fit-content !important; line-height: 6vh;"><a href="https://www.free-stock-music.com/alexander-nakarada-medieval-chateau.html" target="_blank">
+        Music everywhere else:<br>
+        Medieval Chateau by Alexander Nakarada | https://www.serpentsoundstudios.com<br>
+        Music promoted by https://www.free-stock-music.com<br>
+        Creative Commons / Attribution 4.0 International (CC BY 4.0)<br>
+        https://creativecommons.org/licenses/by/4.0/</a></div>
+    <div class="footnote" style="height: fit-content !important; line-height: 6vh;"><a href="https://freesound.org/people/JarredGibb/sounds/219478/" target="_blank">
+        Click sound effect:<br>
+        sound effect comes from: https://freesound.org/people/JarredGibb/sounds/219478/<br>
+        created by Jarred Gibb<br>
+        distributed on CC0 1.0 Universal license<br>
+        https://creativecommons.org/publicdomain/zero/1.0/</a></div>
+    <div class="footnote"><a href="https://github.com/Abstergo2003" target="_blank">All of the rest is only mine work. Please don't sue me.</a></div>
+    <div class="button" id="back">Back</div>
+    <script>
+        document.getElementById('back').addEventListener('click', ()=>{
+            window.electron.ipcRenderer.send('button', 'ok');
+            window.location.href = '../index.html'
+        })
+    </script>
+</body>
+</html>

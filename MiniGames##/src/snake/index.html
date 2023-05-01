@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Snake##</title>
+</head>
+<body>
+    <audio id="background" src="../sounds/game.mp3" loop="true"></audio>
+    <audio id="button" src="../sounds/button.wav"></audio>
+    <audio src="../sounds/fail.mp3" id="fail"></audio>
+    <audio src="../sounds/success.mp3" id="succes"></audio>
+    <canvas id="canvas"></canvas>
+    <div class="container">
+        <table id="stats">
+            <tr style="text-align: center;">
+                <td></td>
+                <td id="score"><b>0</b></td>
+                <td></td>
+            </tr>
+            <tr style="text-align: center;" id="desc">
+                <td><b>Apples</b></td>
+                <td><b>Length</b></td>
+                <td><b>Walls</b></td>
+            </tr>
+            <tr style="text-align: center;">
+                <td id="apples"><b>0</b></td>
+                <td id="length"><b>50</b></td>
+                <td id="walls"><b>0</b></td>
+            </tr>
+        </table>
+        <div class="highscore">
+            <div style="float: left; width: 50%; margin: 0; text-align: center;"><b>Highscore:</b></div>
+            <div id="highscore">1</div>
+        </div>
+        <div class="clear"><div id="clear"><b>Clear</div><div id="cost">5</div></b></div>
+        <div class="button" id="back"><b>Back</b></div>
+    </div>
+    <div id="selfHit"><b>You hit yourself!!!</b></div>
+    <div id="wallHit"><b>You hit the border!!!</b></div>
+    <div id="reload"><b>Restart</b></div>
+    <script src="js/snake.js"></script>
+</body>
+</html>

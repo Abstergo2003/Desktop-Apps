@@ -1,0 +1,122 @@
+body {
+    background-color: #1F1F1F;
+    width: 500px;
+    text-align: center;
+    font-family: 'Noto-Sans', sans-serif;
+    text-align: center;
+}
+a {
+    text-decoration: none;
+    color: #D9D9D9;
+    -webkit-tap-highlight-color: none;
+}
+.menu {
+    position: absolute;
+    top: 0;
+    left: -500px;
+    width: 500px;
+    height: 100vh;
+    text-align: left;
+    background-color: #0D0D0D;
+    transition: all .3s ease-in-out;
+    z-index: 999;
+}
+.menu-item {
+    margin-top: 4vh;
+    width: 350px;
+    min-width: 350px;
+    max-width: 350px;
+    margin-left: 25px;
+    height: 10vh;
+    background-color: transparent;
+    filter: invert(99%) sepia(0%) saturate(2685%) hue-rotate(174deg) brightness(108%) contrast(70%);
+    line-height: 10vh;
+    align-items: center;
+    padding: 5vh;
+    transition: all .3s ease-in-out;
+    border-radius: 20px;
+}
+.menu-item h1 {
+    margin: 0
+}
+.menu-item div {
+    height: 10vh;
+    margin-right: 10px;
+    display: inline-block;
+    float: left;
+    align-items: center;
+}
+.menu-item:hover {
+    background-color: #676767;
+    filter: none;
+}
+#randomize div {
+    content: url('../img/randomize.svg');
+}
+#favourite div {
+    content: url('../img/favourites.svg');
+}
+#tag {
+    margin-top: 4vh;
+    margin-left: 25px
+}
+#tag div {
+    content: url('../img/tags.svg');
+}
+#downloads div {
+    content: url('../img/saved.svg');
+}
+#getMenu {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 40px;
+    height: 40px;
+    content: url('../img/menu.svg');
+    filter: invert(99%) sepia(0%) saturate(2685%) hue-rotate(174deg) brightness(108%) contrast(70%);
+    padding: 5px;
+    border-radius: 5px;
+}
+#getMenu:hover {
+    background-color: #676767;
+    filter: none;
+}
+textarea {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #D9D9D9;
+    resize: none;
+    height: 50px;
+    width: 300px;
+    line-height: 50px;
+    font-size: 35px;
+    color: #D9D9D9;
+    white-space: nowrap;
+    overflow-y: hidden;
+}
+#resultHolder {
+    width: 400px;
+    margin-left: 45px;
+    height: 50px;
+    padding: 5px;
+    background: #0D0D0D;
+    border: 2px solid #D9D9D9;
+    border-radius: 10px;
+}
+#tagHolder {
+    width: 400px;
+    margin-left: 50px;
+}
+.tag {
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    background-color: #676767;
+    width: min-content;
+    padding: 5px;
+    color: #D9D9D9;
+    border-radius: 5px;
+    margin: 10px;
+    white-space: nowrap;
+}

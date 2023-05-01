@@ -1,0 +1,95 @@
+@font-face {
+    font-family: 'felwood';
+    src: url('Felwood-regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    background-color: #010400;
+    margin: 0;
+    padding: 0;
+    font-family: 'felwood';
+}
+* {
+    margin: 0;
+    padding: 0;
+    font-family: inherit;
+}
+audio {
+    display: none;
+}
+.button {
+    background-color: #30332E;
+    width: 60%;
+    display: inline-block;
+    margin-top: 20px;
+    height: 8vh;
+    line-height: 8vh;
+    font-size: 6vh;
+    border-radius: 5px;
+    color: #62BBC1;
+    transition: all .3s ease-in-out;
+    text-align: center;
+}
+.button:hover {
+    background-color: #EC058E;
+    color: #30332E;
+}
+.game {
+    width: 70%;
+    background-color: #30332E;
+    float: left;
+    height: 100vh;
+}
+.controls {
+    width: 30%;
+    background-color: #010400;
+    float: left;
+    height: 100vh;
+    text-align: center;
+}
+.card {
+    width: 5vw;
+    height: 15vh;
+    background-color: #62BBC1;
+    margin: 18px;
+    float: left;
+    border-radius: 5px;
+    margin-left: 23px;
+    line-height: 15vh;
+    font-size: 6vh;
+    text-align: center;
+    color: #62BBC1
+}
+.animated {
+    animation: spin1 0.5s linear;
+}
+.data {
+    width: calc(80% - 10px);
+    height: 10vh;
+    background-color: #62BBC1;
+    display: inline-block;
+    margin-top: 20px;
+    border-radius: 5px;
+    padding-left: 10px;
+    line-height: 10vh;
+    font-size: 6vh;
+    text-align: left;
+}
+.container {
+    transform: translateY(-50%);
+    margin-top: 50vh;
+}
+@keyframes spin1 { 100% { transform:rotate(180deg); } }
+::-webkit-scrollbar {
+    width:10px;border-radius:5px
+}
+::-webkit-scrollbar-track {
+    background:#30332E;border-radius:5px
+}
+::-webkit-scrollbar-thumb {
+    background:#62BBC1;border-radius:5px
+}
+::-webkit-scrollbar-thumb:hover {
+    background:#EC058E;border-radius:5px
+}

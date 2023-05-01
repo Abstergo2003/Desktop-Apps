@@ -1,0 +1,88 @@
+@font-face {
+    font-family: 'cestic';
+    src: url('Cestic-regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    font-family: 'cestic';
+    width: 100%;
+    background-color: #1B1B1E;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+.button {
+    display: inline-block;
+    width: 22.5%;
+    height: 10vh;
+    border-radius: 5px;
+    font-size: 6vh;
+    color: #D8DBE2;
+    background-color: #373F51;
+    line-height: 10vh;
+    transition: all .3s ease-in-out;
+    margin: 20px;
+}
+.button:hover {
+    background-color: #58A4B0;
+    color: #373F51;
+}
+h1 {
+    color: #58A4B0;
+    width: 100%;
+    font-size: 10vh;
+    margin: 0;
+    margin-bottom: 10px;
+}
+.option {
+    width: calc(60% - 20px);
+    height: 10vh;
+    border-radius: 5px;
+    font-size: 6vh;
+    color: #D8DBE2;
+    background-color: #373F51;
+    line-height: 10vh;
+    transition: all .3s ease-in-out;
+    margin: 20px;
+    transform: translateX(-50%);
+    margin-left: 50%;
+    text-align: left;
+    padding-left: 20px;
+}
+.bind:hover {
+    background-color: #58A4B0;
+    color: #373F51;
+}
+h2 {
+    color: #58A4B0;
+    width: 100%;
+    font-size: 5vh;
+    margin: 0;
+    margin-bottom: 10px;
+}
+.bind {
+    float: right;
+    margin-right: 20px;
+    width: 8vh;
+    height: 8vh;
+    line-height: 8vh;
+    text-align: center;
+    margin-top: 1vh;
+    border-radius: 5px;
+    transition: background .3s ease-in-out;
+}
+input {
+    float: right;
+    margin-right: 20px;
+    width: 60%;
+    height: 5vh;
+    margin-top: 2.5vh
+}
+.bind img {
+    width: 80%;
+    height: 80%;
+    transform: translateY(-50%);
+    margin-top: 50%;
+    border-radius: 2px;
+}

@@ -1,0 +1,113 @@
+@font-face {
+    font-family: 'cestic';
+    src: url('Cestic-regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    font-family: 'cestic';
+    width: 100%;
+    background-color: #1B1B1E;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+.button {
+    position: fixed;
+    top: 50%;
+    width: 15%;
+    height: 10vh;
+    border-radius: 5px;
+    font-size: 6vh;
+    color: #D8DBE2;
+    background-color: #373F51;
+    line-height: 10vh;
+    transition: all .3s ease-in-out;
+    transform: translateY(-50%);
+}
+.button:hover {
+    background-color: #58A4B0;
+    color: #373F51;
+}
+.clicked {
+    background-color: red !important
+}
+.clicked:hover {
+    background-color: #58A4B0 !important;
+} 
+#back {
+    left: 2.5%
+}
+#delete {
+    right: 2.5%;
+}
+#delete img {
+    height: 100%;
+    width: 100%;
+    filter: invert(89%) sepia(7%) saturate(169%) hue-rotate(184deg) brightness(101%) contrast(87%);
+    transition: all .3s ease-in-out;
+}
+#delete img:hover {
+    filter: invert(23%) sepia(13%) saturate(1013%) hue-rotate(183deg) brightness(93%) contrast(91%);
+}
+h1 {
+    color: #58A4B0;
+    width: 100%;
+    font-size: 10vh;
+    margin: 0;
+    margin-bottom: 10px;
+}
+.save {
+    margin-left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: calc(20vh + 5px);
+    background-color: #373F51;
+    text-align: left;
+    border-radius: 10px;
+    display: flex;
+    margin-bottom: 15px;
+}
+.icon {
+    float: left;
+    height: 100%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    margin: 0;
+    background-color: #58A4B0;
+}
+table {
+    float: left;;
+    flex-grow: 1;
+    height: 100%;
+    font-size: 5vh;
+    line-height: 10vh;
+    padding: 0;
+    margin: 0;
+    padding-left: 20px;
+    color: #D8DBE2;
+    transition: background-color .3s linear;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+tr{
+    margin: 0;
+    padding: 0;
+}
+td {
+    margin: 0;
+    padding: 0;
+}
+.small-icon {
+    height: 5vh;
+    padding: 0;
+    margin: 0;
+    filter: invert(89%) sepia(7%) saturate(169%) hue-rotate(184deg) brightness(101%) contrast(87%);
+}
+.icon:hover ~ table{
+    background-color: #58A4B0;
+    
+}
+table:hover{
+    background-color: #58A4B0;
+}
