@@ -1,6 +1,7 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain, ipcRenderer } = require('electron');
 const path = require('path');
-
+const UserData = app.getPath('userData')
+console.log(UserData)
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
   app.quit();
@@ -20,7 +21,9 @@ const createWindow = () => {
 
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
-
+  ipcMain.on('askPath', ()=>{
+    mainWindow.webContents.send('userData', UserData);
+  })
   // Open the DevTools.
 };
 

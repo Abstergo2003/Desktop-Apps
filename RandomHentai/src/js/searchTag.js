@@ -1,7 +1,16 @@
 const {readFileSync} = window.fs
 const {writeFileSync} = window.fs
 const TagUrl = window.path.tags
-const VarUrl = window.path.variables
+let userDataPath
+let VarUrl
+let coversPath
+window.electron.ipcRenderer.send('askPath');
+window.electron.ipcRenderer.on('userData',function (event, userData) {
+	userDataPath = userData
+	VarUrl = userData + '/variables.json'
+	coversPath = userData
+    loadTags()
+})
 let result
 var TagFile = readFileSync(TagUrl, 'utf-8', function(err, data){
     console.log(data)
@@ -25,7 +34,6 @@ const loadTags = () =>{
         holder.innerHTML += `<div class="tag" id="${i}">${variables.tags[i]}</div>`
     }
 }
-loadTags()
 document.getElementsByTagName('textarea')[0].addEventListener('keyup', search)
 document.addEventListener('click', (e)=>{
     let id = e.target.id

@@ -1,7 +1,16 @@
 const {readFileSync} = window.fs
 const {writeFileSync} = window.fs
 const {rmSync} = window.fs
-const VarUrl = window.path.variables
+let userDataPath
+let VarUrl
+let coversPath
+window.electron.ipcRenderer.send('askPath');
+window.electron.ipcRenderer.on('userData',function (event, userData) {
+	userDataPath = userData
+	VarUrl = userData + '/variables.json'
+	coversPath = userData
+    load()
+})
 const DownloadPath = window.path.download
 var holder = document.getElementById('DownHolder')
 var file = JSON.parse(readFileSync(VarUrl, 'utf-8'))
@@ -20,7 +29,6 @@ function remove(id) {
     writeFileSync(VarUrl, JSON.stringify(file), 'utf-8')
     load()
 }
-load()
 document.addEventListener('click', (e)=>{
     let did = e.target.id
     console.log(did)

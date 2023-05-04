@@ -1,13 +1,10 @@
 // See the Electron documentation for details on how to use preload scripts:
 // https://www.electronjs.org/docs/latest/tutorial/process-model#preload-scripts
-const { contextBridge } = require('electron');
+const { contextBridge, ipcRenderer } = require('electron');
 const fs = require('fs');
 const path  = require('path')
 const https = require('https')
 const tagsFilePath = path.join(__dirname, 'assets', 'tags.json');
-const varFilePath = path.join(__dirname, 'assets', 'variables.json')
-const coversPath = path.join(__dirname, 'assets', 'covers')
-const DownloadPath = 'E:/archiwum/My Creations/test'
 const axios = require("axios");
 contextBridge.exposeInMainWorld('axios', {
   request : axios.request
@@ -17,14 +14,19 @@ contextBridge.exposeInMainWorld('fs', {
   writeFileSync: fs.writeFileSync,
   createWriteStream: fs.createWriteStream,
   mkdir: fs.mkdir,
-  rmSync: fs.rmSync
+  rmSync: fs.rmSync,
+  writeFile: fs.writeFile
   // Add other methods and properties of the fs module that you need.
+});
+contextBridge.exposeInMainWorld("electron", {
+  ipcRenderer: {
+    ...ipcRenderer,
+    on: ipcRenderer.on.bind(ipcRenderer),
+    removeListener: ipcRenderer.removeListener.bind(ipcRenderer),
+  },
 });
 contextBridge.exposeInMainWorld('path', {
   tags: tagsFilePath,
-  variables: varFilePath,
-  cover: coversPath,
-  download: DownloadPath
   // Add other methods and properties of the fs module that you need.
 });
 contextBridge.exposeInMainWorld('https', {

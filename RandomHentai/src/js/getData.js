@@ -1,13 +1,54 @@
 const {readFileSync} = window.fs
 const {writeFileSync} = window.fs
-const VarUrl = window.path.variables
-const coversPath = window.path.cover
+const {mkdir} = window.fs
 var id
 var gallery_id
 var pages
 var error_counter = 0
 var title
-var tags = JSON.parse(readFileSync(VarUrl, 'utf-8')).tags
+let tags
+var variables
+var isFirst = localStorage.getItem('isFirst')
+let userDataPath
+let VarUrl
+let coversPath
+var paths
+const variabless = {"favourites":[],"tags":[],"downloaded":[],"path":""}
+const {writeFile} = window.fs
+window.electron.ipcRenderer.send('askPath');
+window.electron.ipcRenderer.on('userData',function (event, userData) {
+	userDataPath = userData
+	VarUrl = userData + '\\variables.json'
+	coversPath = userData
+    if (!isFirst) {
+		console.log('first run')
+        document.getElementById('path').style.left = '50px'
+        document.getElementById('path').style.top = '200px'
+        document.getElementById('path-ok').addEventListener('click', setPath)
+        writeFile(VarUrl, JSON.stringify(variabless), function (err) {
+            if (err) throw err;
+            console.log('File is created successfully.');
+        })
+    } else {
+		variables = JSON.parse(readFileSync(VarUrl, 'utf-8'))
+		paths = variables.path;
+		tags = variables.tags;
+		if (tags.length==0) {
+			id = Math.round(Math.random() * (110238 - 1) + 1)
+			getRandomData()
+		} else {
+			getMaxPages()
+		}
+	}
+})
+function setPath() {
+    variables = JSON.parse(readFileSync(VarUrl, 'utf-8'))
+    variables.path = document.getElementById('path-txt').value
+    writeFileSync(VarUrl, JSON.stringify(variables), 'utf-8')
+    localStorage.setItem('isFirst', false)
+    document.getElementById('path').style.left = '-500px'
+	window.location.reload()
+}
 // %2B = +
 var URL = 'https://hentaifox.com/search/?q='
 var maxPages
@@ -64,6 +105,9 @@ function getRandomData() {
 		var doc = parser.parseFromString(html, 'text/html');
     	console.log(doc)
 		var info = doc.querySelector('.info')
+		var halfpages = doc.querySelectorAll('.pages')[0].innerText
+		pages = +halfpages.slice(7)
+		console.log('pages: ' + pages)
 		title = info.querySelector('h1').innerText //getting title
 		document.querySelector('h3').innerText = title //inserting title
 		var coverUrl = doc.querySelector('.cover').querySelector('img').getAttribute('src') //getting cover URL
@@ -98,11 +142,11 @@ function AddFav() {
 	console.log('adding')
 	var newFav = {
 		"id": id,
-		"gallery_id" : +gallery_id,
+		"gallery_id" : gallery_id,
 		"title" : title,
 		"pages": pages
 	}
-	var variables = JSON.parse(readFileSync(VarUrl, 'utf-8'))
+	variables = JSON.parse(readFileSync(VarUrl, 'utf-8'))
 	variables.favourites.push(newFav)
 	console.log(variables)
 	writeFileSync(VarUrl, JSON.stringify(variables), 'utf-8')
@@ -117,10 +161,49 @@ function AddFav() {
     	console.log('Error downloading image:', err.message);
   	});
 }
-document.getElementById('favourites').addEventListener('click', AddFav)
-if (tags.length==0) {
-	id = Math.round(Math.random() * (110238 - 1) + 1)
-	getRandomData()
-} else {
-	getMaxPages()
+async function download() {
+    //creating folder
+	console.log(paths)
+  var path2 = paths+'/'+id
+	console.log(path2)
+    mkdir(path2, { recursive: true }, (err) => {
+        if (err) {
+            console.log('Error creating directory:', err);
+        } else {
+            console.log('Directory created successfully.');
+        }
+    });
+    console.log('start')
+    for(var i = 1; i<pages+1; i++) {
+        console.log('testing jpg')
+        var pageURL = `https://i.hentaifox.com/${gallery_id}/${i}.jpg`
+        var insidepath = path2+`/${i}.jpg`
+        await fetch(pageURL, {
+            method: "GET"
+        }).then((response)=>{
+            if (!response.ok) {
+                console.log('testing png')
+                pageURL = `https://i.hentaifox.com/${gallery_id}/${i}.png`
+                insidepath = path2+`/${i}.png`
+            }
+            window.downloadImage(pageURL, insidepath)
+            .then(() => {
+              console.log('Image downloaded successfully.');
+           })
+            .catch((err) => {
+              console.log('Error downloading image:', err.message);
+            });
+        })
+    }
+    var newDown = {
+        "id": id,
+        "pages": pages,
+        "title" : title
+    }
+    var variables = JSON.parse(readFileSync(VarUrl, 'utf-8'))
+	variables.downloaded.push(newDown)
+	console.log(variables)
+	writeFileSync(VarUrl, JSON.stringify(variables), 'utf-8')
 }
+document.getElementById('favourites').addEventListener('click', AddFav)
+document.getElementById('download').addEventListener('click', download)
