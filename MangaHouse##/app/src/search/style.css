@@ -1,0 +1,91 @@
+* {
+    --black: #1B1B1E;
+    --ligh-black: #262629;
+    --grey: #373F51;
+    --blue: #58A4B0;
+    --white: #D8DBE2;
+    font-family: inherit;
+}
+a {
+    color: var(--black);
+    text-decoration: none
+}
+body {
+    background-color: var(--black);
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-family: 'Jujutsu Kaisen';
+    text-align: center;
+}
+.upper {
+    position: fixed;
+    top: 0;
+    left: 9vh;
+    width: calc(100% - 9vh);
+    height: 6vh;
+    background-color: var(--ligh-black);
+    color: var(--blue);
+    line-height: 6vh;
+    font-size: 2vh;
+    font-family: 'Manga Style';
+    z-index: 998;
+}
+.levish {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 99vh;
+    width: 9vh;
+    background-color: var(--grey);
+    padding-top: 1vh;
+    z-index: 999;
+}
+.navigator {
+    width: 80%;
+    background-color: var(--blue);
+    margin-left: 10%;
+    border-radius: 4px;
+    transition: all .3s ease-in-out;
+    margin-bottom: 10px;
+    padding-bottom: 1vh;
+    padding-top: 1vh;
+}
+.navigator span:nth-child(1) {
+    font-family: 'Manga Style';
+}
+.navigator:hover {
+    background-color: var(--ligh-black);
+    color: var(--blue)
+}
+.holder {
+    width: calc(100% - 9vh - 100px);
+    margin-left: 9vh;
+    margin-top: 6vh;
+    padding: 50px;
+    outline: 1px solid green;
+}
+input {
+    width: 100%;
+    height: 0vh;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid var(--blue);
+    transition: all .3s ease-in-out;
+    margin-top: 5vh;
+    overflow: hidden;
+}
+input:focus {
+    height: 5vh;
+    margin-top: 0;
+    background-color: #58A4B0;
+}
+.anim {
+    height: 5vh;
+    width: 60%;
+}
+.anim:hover input {
+    height: 5vh;
+    margin-top: 0;
+    background-color: #58A4B0;
+}

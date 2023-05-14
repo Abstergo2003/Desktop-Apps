@@ -1,0 +1,162 @@
+* {
+    --black: #1B1B1E;
+    --ligh-black: #262629;
+    --grey: #373F51;
+    --blue: #58A4B0;
+    --white: #D8DBE2;
+    font-family: inherit;
+}
+a {
+    color: var(--black);
+    text-decoration: none
+}
+body {
+    background-color: var(--black);
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-family: 'Jujutsu Kaisen';
+    text-align: center;
+}
+.upper {
+    position: fixed;
+    top: 0;
+    left: 9vh;
+    width: calc(100% - 9vh);
+    height: 6vh;
+    background-color: var(--ligh-black);
+    color: var(--blue);
+    line-height: 6vh;
+    font-size: 2vh;
+    font-family: 'Manga Style';
+    z-index: 998;
+}
+.levish {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 99vh;
+    width: 9vh;
+    background-color: var(--grey);
+    padding-top: 1vh;
+    z-index: 999;
+}
+.navigator {
+    width: 80%;
+    background-color: var(--blue);
+    margin-left: 10%;
+    border-radius: 4px;
+    transition: all .3s ease-in-out;
+    margin-bottom: 10px;
+    padding-bottom: 1vh;
+    padding-top: 1vh;
+}
+.navigator span:nth-child(1) {
+    font-family: 'Manga Style';
+}
+.navigator:hover {
+    background-color: var(--ligh-black);
+    color: var(--blue)
+}
+.box {
+    width: calc(100% - 9vh - 50px);
+    padding: 25px;
+    margin-left: 9vh;
+    margin-top: 6vh;
+}
+#part1 {
+    width: 30%;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+}
+#part1 img {
+    width: 30vh;
+    height: 30vh;
+    border-radius: 50%;
+}
+#part2 {
+    width: 70%;
+    text-align: justify;
+    display: inline-block;
+    max-height: calc(30vh + 50px);
+    vertical-align: top;
+}
+#part2 span {
+    color: var(--white);
+    font-size: 3vh;
+}
+.box h1 {
+    color: var(--white);
+    font-size: 6vh;
+}
+.feed {
+    width: 80%;
+    background-color: var(--blue);
+    padding: 10px;
+    border-radius: 3px;
+    text-align: left;
+    margin-left: 10%;
+    margin-top: 20px
+}
+.feed span {
+    color: var(--black);
+    font-size: 3vh;
+}
+.feed p {
+    font-size: 2vh;
+    color: var(--grey);
+}
+.reaction {
+    padding: 5px;
+    display: inline-block;
+    border-radius: 3px;
+    background-color: transparent;
+    transition: all .3s ease-in-out;
+    text-align: center;
+}
+.reaction span, .reaction img {
+    transition: all .3s ease-in-out;
+}
+.reaction img {
+    width: 30px;
+    height: 30px;
+}
+.reaction:hover {
+    background-color: var(--grey);
+}
+.reaction:hover span{
+    color: var(--blue)
+}
+.reaction:hover img {
+    filter: invert(68%) sepia(48%) saturate(374%) hue-rotate(140deg) brightness(79%) contrast(88%);
+}
+#blog {
+    display: block;
+}
+#items {
+    display: none;
+}
+.item {
+    padding: 10px;
+    width: 10vw;
+    border-radius: 3px;
+    display: inline-block;
+    margin: 10px;
+    transition: all .3s ease-in-out;
+}
+.item img {
+    width: 70%;
+    border-radius: 3px;
+}
+.item span {
+    max-width: 100%;
+    color: var(--white);
+    transition: all .3s ease-in-out;
+}
+.item:hover {
+    background-color: var(--grey);
+}
+.item:hover span {
+    color: var(--blue)
+}

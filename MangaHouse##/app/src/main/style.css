@@ -1,0 +1,124 @@
+* {
+    --black: #1B1B1E;
+    --ligh-black: #262629;
+    --grey: #373F51;
+    --blue: #58A4B0;
+    --white: #D8DBE2;
+    font-family: inherit;
+}
+a {
+    color: var(--black);
+    text-decoration: none
+}
+body {
+    background-color: var(--black);
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-family: 'Jujutsu Kaisen';
+    overflow: hidden;
+}
+.upper {
+    position: fixed;
+    top: 0;
+    left: 9vh;
+    width: calc(100% - 9vh);
+    height: 6vh;
+    background-color: var(--ligh-black);
+    color: var(--blue);
+    line-height: 6vh;
+    font-size: 2vh;
+    font-family: 'Manga Style';
+    z-index: 998;
+}
+.levish {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 99vh;
+    width: 9vh;
+    background-color: var(--grey);
+    padding-top: 1vh;
+    z-index: 999;
+}
+.navigator {
+    width: 80%;
+    background-color: var(--blue);
+    margin-left: 10%;
+    border-radius: 4px;
+    transition: all .3s ease-in-out;
+    margin-bottom: 10px;
+    padding-bottom: 1vh;
+    padding-top: 1vh;
+}
+.navigator span:nth-child(1) {
+    font-family: 'Manga Style';
+}
+.navigator:hover {
+    background-color: var(--ligh-black);
+    color: var(--blue)
+}
+.holder {
+    height: 30vh;
+    padding-top: 1vh;
+    width: calc(100% - 9vh);
+    background-color: var(--ligh-black);
+    margin-left: calc(9vh);
+    border-radius: 4px;
+    text-align: left;
+    position: relative;
+    color: var(--blue);
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin-bottom: 0.33vh;
+}
+.holder span {
+    margin: 0;
+    display: block;
+    margin-left: 10px;
+    font-size: 4vh;
+    line-height: 4vh;
+    color: var(--blue);
+}
+.content {
+    margin: 0;
+    width: 8vw;
+    height: 24vh;
+    background-color: var(--grey);
+    margin-top: 1vh;
+    margin-left: 15px;
+    border-radius: 4px;
+    display: inline-block;
+    text-align: center;
+    transition: all .3s ease-in-out;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.content span {
+    font-size: 3vh;
+    margin: 0;
+}
+.content img {
+    max-width: 90%;
+    height: calc(21vh - 30px);
+    margin-top: 10px;
+    border-radius: 4px;
+}
+.content:hover {
+    background-color: var(--black);
+}
+::-webkit-scrollbar {
+    width:5px;
+    border-radius:5px;
+    height: 5px;
+    transition: all .3s ease-in-out
+}
+::-webkit-scrollbar-track {
+    background-color:var(--black);border-radius:5px;
+    transition: all .3s ease-in-out
+}
+::-webkit-scrollbar-thumb {
+    background-color:#62BBC1;border-radius:5px;
+    transition: all .3s ease-in-out
+}

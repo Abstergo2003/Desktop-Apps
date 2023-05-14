@@ -1,0 +1,70 @@
+{
+    "id" : 548461,
+    "type" : "manga",
+    "title" : "some title",
+    "description" : "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi suscipit asperiores accusantium ducimus at quia laboriosam perspiciatis ullam vitae deserunt quam odit totam aspernatur voluptas similique incidunt, fugiat aperiam! Saepe?",
+    "releaseType" : "weekly",
+    "tags" : [
+        "regression", "history", "action", "romcom", "op mc", "dark", "drama"
+    ],
+    "chapters" : [
+        {
+            "title" : "sub title",
+            "files" : 4,
+            "releaseDate" : "31 Jan 2023 Mon"
+        },
+        {
+            "title" : "sub title2",
+            "files" : 3,
+            "releaseDate" : "31 Jan 2023 Mon"
+        },
+        {
+            "title" : "sub title3",
+            "files" : 5,
+            "releaseDate" : "31 Jan 2023 Mon"
+        },
+        {
+            "title" : "sub title4",
+            "files" : 4,
+            "releaseDate" : "31 Jan 2023 Mon"
+        }
+    ],
+    "author" : 515151,
+    "lastUpdate" : "31 Jan 2023 Mon",
+    "status" : 1,
+    "notes" : "shedulded season end on chapter 54, returning 31 May 2023 Thu",
+    "returnDate" : "31 May 2023 Thu",
+    "_possibleSTATUSES" : [
+        "shedulded to start",
+        "ongoing",
+        "season end",
+        "held because of writer's health problem",
+        "ended",
+        "releasing side story",
+        "dropped"
+    ],
+    "_numbersOFstatuses" : [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+    ],
+    "blog" : [
+        {
+            "id" : 5454554,
+            "author" : 515151,
+            "text": "random comment",
+            "date": "31 Jan 2023 Mon",
+            "responses" : [
+                {
+                    "author" : 515151,
+                    "text": "random comment",
+                    "date": "31 Jan 2023 Mon"
+                }
+            ]
+        }
+    ]
+}

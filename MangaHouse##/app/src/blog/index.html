@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="../fonts/fonts.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="upper" id="data-title">RANDOM TITLE</div>
+    <div class="levish">
+        <a href="../main/index.html">
+            <div class="navigator">
+                <span>M</span><br>
+                <span>Home</span>
+            </div>
+        </a>
+        <a href="" onclick="switchView2(); return false" id="blogn">
+            <div class="navigator">
+                <span>B</span><br>
+                <span>Blog</span>
+            </div>
+        </a>
+        <a href="" onclick="switchView1(); return false" id="chaptersn">
+            <div class="navigator">
+                <span>C</span><br>
+                <span>Chapters</span>
+            </div>
+        </a>
+        <a href="">
+            <div class="navigator">
+                <span>A</span><br>
+                <span>Author</span>
+            </div>
+        </a>
+    </div>
+    <div class="container" id="info">
+        <div class="half">
+            <img src="img/test.jpg" id="cover">
+        </div>
+        <div class="half" id="infoh"></div>
+        <div class="blog">      
+                <h1>Comments</h1>
+                <div class="bigButton">OK</div>
+                <input type="text">
+                <div class="comments"></div>
+        </div>
+    </div>
+    <div class="container" id="chapters">
+        <h1>Chapters</h1>
+        <a href="../read/index.html"><div class="button" id="0">FIRST</div></a>
+        <a href="../read/index.html"><div class="button">LAST</div><br></a>
+    </div>
+    <script src="js/menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+* {
+    --black: #1B1B1E;
+    --ligh-black: #262629;
+    --grey: #373F51;
+    --blue: #58A4B0;
+    --white: #D8DBE2;
+    font-family: inherit;
+}
+body {
+    background-color: var(--black);
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-family: 'Jujutsu Kaisen';
+    overflow: hidden;
+}
+.accounts {
+    width: 100%;
+    height: 35vh;
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+h1 {
+    color: var(--white);
+    line-height: 5vh;
+    font-size: 4vh;
+    margin: 0;
+    margin-top: 20px;
+}
+.account {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: calc((30vh - 20px - 150px) / 2);
+    border-radius: 4px;
+    transition: background .3s ease-in-out;
+    background-color: var(--ligh-black);
+}
+.account img {
+    width: 100px;
+    height: 100px;
+    margin-top: 10px;
+    border-radius: 100%;
+    margin-bottom: 10px;
+}
+.account span {
+    font-size: 20px;
+    color: var(--white)
+}
+.account:hover {
+    background-color: var(--grey);
+}
+.box {
+    float: left;
+    width: 50%;
+    position: relative;
+}
+input {
+    background-color: transparent;
+    width: 20vw;
+    height: 4vh;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid var(--blue);
+    color: var(--blue);
+    font-size: 3vh;
+    margin-left: 25px;
+}
+table {
+    width: 80%;
+    margin-left: 10%;
+    color: var(--white);
+    font-size: 4vh;
+    margin-top: 20px;
+}
+td {
+    height: 80px;
+}
+.button {
+    position: absolute;
+    top: 400px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 5vh;
+    background-color: var(--blue);
+    color: var(--black);
+    line-height: 5vh;
+    font-size: 3vh;
+    border-radius: 4px;
+    transition: all .3s ease-in-out
+}
+.button:hover {
+    background-color: var(--grey);
+    color: var(--blue)
+}
+.saved-login {
+    width: 100%;
+    height: 0vh;
+    overflow: hidden;
+    transition: all .3s ease-in-out;
+}
+span {
+    color: var(--white);
+    font-size: 4vh;
+}
+.container {
+    transform: translateY(-50%);
+    margin-top: 32.5vh;
+}
+.button2 {
+    width: 30%;
+    height: 5vh;
+    background-color: var(--blue);
+    color: var(--black);
+    line-height: 5vh;
+    font-size: 3vh;
+    border-radius: 4px;
+    transition: all .3s ease-in-out;
+    margin-left: 35%;
+    margin-top: 50px;
+}
+.button2:hover {
+    background-color: var(--grey);
+    color: var(--blue)
+}
