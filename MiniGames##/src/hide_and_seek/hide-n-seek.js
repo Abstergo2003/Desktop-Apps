@@ -5,7 +5,6 @@ var isShuffling = true
 let bet = 10
 let points = 50
 let highscores
-let path
 var button = document.getElementById('button')
 var fail = document.getElementById('fail')
 var succes = document.getElementById('succes')

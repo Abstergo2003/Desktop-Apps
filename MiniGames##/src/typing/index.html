@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose game</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <h1>Choose Type</h1>
+    <a href="game.html" onclick="sessionStorage.setItem('type', 'short')">
+        <div class="type">
+            <img src="img/short.png"><br>
+            <span><b>Short</b></span>
+        </div>
+    </a>
+    <a href="game.html" onclick="sessionStorage.setItem('type', 'mid')">
+        <div class="type">
+            <img src="img/mid.png"><br>
+            <span><b>Mid</b></span>
+        </div>
+    </a>
+    <!--<a href="game.html" onclick="sessionStorage.setItem('type', 'long')">
+        <div class="type">
+            <img src="img/long.png"><br>
+            <span><b>Long</b></span>
+        </div>
+    </a>-->
+    <a href="../index.html"><div class="button" id="back">Back</div></a>
+</body>
+</html>

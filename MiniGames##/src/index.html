@@ -15,6 +15,7 @@
         <a href="snake/index.html"><div class="button" id="snake"><b>Snake</b></div></a>
         <a href="memory/index.html"><div class="button" id="memory"><b>Memory</b></div></a>
         <a href="hide_and_seek/index.html"><div class="button" id="hide-n-seek"><b>Hide & Seek</b></div></a>
+        <a href="typing/index.html"><div class="button" id="typing"><b>Typing</b></div></a>
         <a href="options/index.html"><div class="button" id="options"><b>Options</b></div></a>
         <a href="credentials/index.html"><div class="button" id="credentials"><b>Credentials</b></div></a>
     </div>
@@ -22,7 +23,7 @@
         var audio = document.getElementById('background')
         var button = document.getElementById('button')
         if(!localStorage.getItem('isFirst')) {
-           var obj = {
+            var obj = {
                 'snake' : 0,
                 "memory" : 0,
                 "hideNseek" : 50

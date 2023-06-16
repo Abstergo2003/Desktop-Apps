@@ -3,14 +3,13 @@ let result = [];
 var pary = []
 var counter = 0
 var round = 1
-var seconds = 00; 
-var tens = 00; 
+var seconds = 0; 
+var tens = 0; 
 var score = 0
 var appendTens = document.getElementById("miliseconds")
 var appendSeconds = document.getElementById("seconds")
 var Interval ;
 var highscores
-let path
 let isGameRunning = true
 let points = 0
 var button = document.getElementById('button')

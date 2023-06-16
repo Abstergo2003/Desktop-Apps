@@ -1,0 +1,59 @@
+* {
+    --toLit: rgb(122, 0, 0);
+    --lit: #e5e5e5;
+    font-family: inherit;
+}
+@font-face {
+    font-family: 'felwood';
+    src: url('Felwood-regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    font-family: 'felwood';
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    height: 100vh;
+    background-color: #010400;
+}
+h1 {
+    font-size: 10vh;
+    color: #62BBC1;
+    margin: 20px;
+}
+.type {
+    width: 30vw;
+    height: 30vh;
+    background-color: #62BBC1;
+    display: inline-block;
+    margin: 2vw;
+    border-radius: 4px;
+}
+.type span {
+    color: #30332E;
+    font-size: 4vh;
+}
+.type img {
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    width: 40%;
+    border-radius: 4px;
+}
+.button {
+    background-color: #30332E;
+    width: 30%;
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    height: 8vh;
+    line-height: 8vh;
+    font-size: 6vh;
+    border-radius: 5px;
+    color: #62BBC1;
+    transition: all .3s ease-in-out;
+}
+.button:hover {
+    background-color: #EC058E;
+    color: #30332E;
+}
