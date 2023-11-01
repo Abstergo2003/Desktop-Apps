@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../scroll.css">
+</head>
+<body>
+    <div class="holder"></div>
+
+    <!--<div class="selectPanel" id="walls">
+        <h1>Choose Wall Type</h1>
+        <div class="container">
+            <img src="img/weather_cancer.svg" onclick="hideWallSelection(this.src)">
+            <img src="img/add.svg" onclick="hideWallSelection(this.src)">
+            <img src="img/add.svg" onclick="hideWallSelection(this.src)">
+            <img src="img/add.svg" onclick="hideWallSelection(this.src)">
+            <img src="img/upload.svg" onclick="uploadWall()">
+        </div>
+    </div>
+
+    <div class="selectPanel" id="background">
+        <h1>Choose Wall Type</h1>
+        <div class="container">
+            <img src="img/weather_cancer.svg" onclick="hideBackgroundSelection(this.src)">
+            <img src="img/add.svg" onclick="hideBackgroundSelection(this.src)">
+            <img src="img/add.svg" onclick="hideBackgroundSelection(this.src)">
+            <img src="img/add.svg" onclick="hideBackgroundSelection(this.src)">
+            <img src="img/upload.svg" onclick="uploadBackground()">
+        </div>
+    </div>-->
+
+    <div class="area" id="area"> 
+    </div>
+
+    <div id="leftClick" onmouseleave="hide(this)">
+        <div class="relative">
+            <span onclick="back()">Go Back</span>
+            <span onclick="forward()">Go Forward</span>
+            <span onclick="changeBackground()">Change Background</span>
+            <span onclick="expandInsert(this, event)">Walls Mode</span>
+            <span onclick="showGrid()">Show Grid</span>
+            <span onclick="hideGrid()">Hide Grid</span>
+            <span onclick="objectMode()">Object Mode</span>
+            <span onclick="deleteFromMap()">Delete From Map</span>
+            <span onclick="expandInsert(this, event)">Insert...</span>
+        </div>
+    </div>
+
+    <script src="js/globalVariables.js"></script>
+    <script src="js/walls.js"></script>
+    <script src="js/objects.js"></script>
+    <script src="js/leftClick.js"></script>
+</body>
+</html>

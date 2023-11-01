@@ -1,0 +1,190 @@
+* {
+    font-family: inherit;
+    --black: #1B1B1E;
+    --green: #58A4B0;
+    --white: #D8DBE2;
+    --grey: #373F51;
+    --common: #1a5e68;
+    --uncommon: rgb(15, 110, 15);
+    --rare: rgb(11, 11, 121);
+    --veryRare: rgb(120, 120, 230);
+    --legendary: rgb(252, 214, 0);
+    --artifact: rgb(151, 17, 17);
+    --unique: #D8DBE2;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--black);
+}
+.select {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30vw;
+    height: 100vh;
+}
+.sort {
+    display: inline-block;
+    width: 4.8vw;
+    height: 4.8vw;
+    background-color: var(--green);
+    border-radius: 2px;
+    margin-top: 1vw;
+    margin-left: 1vw;
+    transition: all .2s ease-in-out;
+    background-size: contain;
+    background-repeat: no-repeat;
+    vertical-align: top;
+    cursor: pointer;
+}
+.sort:hover {
+    background-color: var(--grey);
+}
+.sort:active {
+    background-color: var(--black);
+}
+#weapon {
+    background-image: url(img/weapon.png);
+}
+#magic {
+    background-image: url(img/magic.png);
+}
+#consumable {
+    background-image: url(img/consumable.png);
+}
+#other {
+    background-image: url(img/other.png);
+}
+#all {
+    background-image: url(img/all.png);
+}
+.list {
+    width: 100%;
+    height: calc(100vh - 4.8vw - 2vw);
+    margin-top: 1vw;
+    overflow: auto;
+}
+.item {
+    width: calc(4.8vw * 5 + 4vw);
+    height: 3vh;
+    background-color: var(--grey);
+    margin-left: 1vw;
+    border-radius: 2px;
+    margin-top: 0.5vw;
+    margin-bottom: 0.5vw;
+    padding: 2px;
+    cursor: pointer;
+}
+.item span:nth-child(1) {
+    width: 60%;
+    display: inline-block;
+    height: 100%;
+    vertical-align: top;
+}
+.item span:nth-child(2) {
+    width: 20%;
+    height: 100%;
+    display: inline-block;
+    vertical-align: top;
+    color: var(--legendary)
+}
+.item img {
+    height: 100%;
+    float: right;
+    filter: invert(64%) sepia(9%) saturate(1706%) hue-rotate(140deg) brightness(90%) contrast(90%);
+}
+.inspect {
+    position: absolute;
+    top: 0;
+    left: 30vw;
+    width: 70vw;
+    height: 100vh;
+}
+.info {
+    width: 30vw;
+    height: 8vh;
+    margin-left: 3.333vw;
+    margin-top: 1vw;
+    display: inline-block;
+}
+.info span, .description span {
+    color: var(--white);
+    font-size: 15px;
+}
+.info input {
+    width: calc(100% - 10px);
+    padding: 5px;
+    border: 0;
+    outline: 0;
+    background-color: var(--green);
+    border-radius: 2px;
+    color: var(--black);
+    font-size: 15px;
+}
+.info select {
+    width: 100%;
+    height: 30px;
+    background-color: var(--green);
+    outline: none;
+    border: none;
+    font-size: 15px;
+    color: var(--black);
+}
+.inspect img {
+    height: 20vh;
+    transform: translateX(-50%);
+    margin-left: 50%;
+    border: 2px solid black;
+    border-radius: 3px;
+    margin-top: 1vw;
+    filter: invert(64%) sepia(9%) saturate(1706%) hue-rotate(140deg) brightness(90%) contrast(90%);
+}
+.description {
+    width: 63.333vw;
+    height: 40vh;
+    margin-left: 3.333vw
+}
+textarea {
+    width: calc(100% - 10px);
+    padding: 5px;
+    height: 35vh;
+    background-color: var(--grey);
+    border: none;
+    outline: none;
+    color: var(--white);
+    border-radius: 3px;
+    resize: none;
+}
+#leftClick {
+    position: absolute;
+    top: 200px;
+    left: -2000px;
+    width: 12vw;
+    height: auto;
+    background-color: var(--green);
+    outline: var(--white) 2px solid;
+    text-align: center;
+    z-index: 999;
+}
+#leftClick span {
+    border-bottom: 1px solid var(--white);
+    width: calc(100% - 4px);
+    display: block;
+    transition: background .1s ease-in-out;
+    transition: color .1s ease-in-out;
+    padding: 2px;
+    text-align: left;
+    font-size: 1vw;
+    height: 1vw;
+}
+#leftClick span:hover {
+    background-color: var(--grey);
+    color: var(--white)
+}
+#leftClick span:active {
+    background-color: var(--black);
+}
+.new {
+    outline: 4px solid var(--common)
+}

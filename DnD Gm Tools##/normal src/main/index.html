@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../scroll.css">
+</head>
+<body>
+    <div class="info">
+        <img src="img/Shadow_Map_3000x.jpg">
+        <div class="main">
+            <input style="width: calc(90% - 10px); text-align: center; display: block; margin-left: 5%; margin-top: 23px" id="title">
+            <input style="margin-left: 5%" id="location"><input style="margin-left: 10%" id="villain">
+            <input style="margin-left: 5%;" id="overallQuest"><input style="margin-left: 10%;" id="currentQuest">
+            <input style="margin-left: 5%;" id="currentSession"><input style="margin-left: 10%;" id="expectedSessions">
+        </div>
+        <textarea id="description" placeholder="Description..."></textarea>
+    </div>
+
+    <div class="buttons">
+        <a href="../fight/index.html"><span>Fight</span></a>
+        <a href="../map/index.html" onclick="localStorage.setItem('map', 'mainMap.json')"><span>Map</span></a>
+        <a href="../quests/index.html"><span>Quests</span></a>
+        <a href="../characters/index.html"><span>Characters</span></a>
+        <a href="../items/index.html"><span>Items</span></a>
+        <a href="" onclick="window.electron.ipcRenderer.send('openSoundsPanel')"><span>Sounds</span></a>
+        <a href="" onclick="window.electron.ipcRenderer.send('openDices')"><span>Dices</span></a>
+        <a href="../otherTools/index.html"><span>Other Tools</span></a>
+    </div>
+
+
+    <div id="leftClick" onmouseleave="hide(this)">
+        <div class="relative">
+            <span onclick="back()">Go Back</span>
+            <span onclick="forward()">Go Forward</span>
+        </div>
+    </div>
+
+    <script src="js/info.js"></script>
+    <script src="js/leftClick.js"></script>
+</body>
+</html>

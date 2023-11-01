@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Characters</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../scroll.css">
+</head>
+<body>
+    <div class="select">
+        <div class="sort" id="boss"></div><div class="sort" id="enemy"></div><div class="sort" id="ally"></div><div class="sort" id="pet"></div><div class="sort" id="nonCombat"></div><div class="sort" id="all"></div>
+        <div class="list"></div>
+    </div>
+
+    <div class="inspect">
+        <img src="img/nonCombat.png" id="inspectICON"><br>
+        <div class="info">
+            <span>Name:</span><br>
+            <input type="text" id="inspectName">
+        </div>
+        <div class="info">
+            <span>Wealth/Drop:</span><br>
+            <input type="text" id="inspectWealth" style="color: var(--legendary) !important">
+        </div>
+        <div class="info">
+            <span>Type:</span><br>
+            <select name="" id="inspectType">
+                <option value="boss">Boss</option>
+                <option value="enemy">Enemy</option>
+                <option value="ally">Ally</option>
+                <option value="pet">Pet</option>
+                <option value="nonCombat">Non Combat</option>
+            </select>
+        </div>
+        <div class="info">
+            <span>Race:</span><br>
+            <select name="" id="inspectRace">
+                <option value="" disabled>Playable</option>
+                <option value="dragonborn">Dragonborn</option>
+                <option value="dwarf">Dwarf</option>
+                <option value="elf">Elf</option>
+                <option value="gnome">Gnome</option>
+                <option value="halfElf">Half-Elf</option>
+                <option value="halfling">Halfling</option>
+                <option value="halfOrc">Half-Orc</option>
+                <option value="human">Human</option>
+                <option value="tiefling">Tiefling</option>
+                <option value="" disabled>.............................................</option>
+                <option value="" disabled>Non Playable</option>
+                <option value="aberration">Abberation</option>
+                <option value="beast">Beast</option>
+                <option value="celestial">Celestial</option>
+                <option value="construct">Construct</option>
+                <option value="dragon">Dragon</option>
+                <option value="elemental">Elemental</option>
+                <option value="fey">Fey</option>
+                <option value="fiend">Fiend</option>
+                <option value="giant">Giant</option>
+                <option value="humanoid">Humanoid</option>
+                <option value="monstrosity">Monstrosity</option>
+                <option value="ooze">Oozes</option>
+                <option value="plant">Plant</option>
+                <option value="undead">Undead</option>
+                <option value="" disabled>.............................................</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div class="info">
+            <span>Alignment:</span><br>
+            <input type="text" id="inspectAlignment">
+        </div>
+        <div class="info">
+            <span>Special Trait:</span><br>
+            <input type="text" id="inspectTrait">
+        </div>
+        <div class="description">
+            <span>Description:</span><br>
+            <textarea name="" id="inspectDescription"></textarea>
+        </div>
+    </div>
+
+    <div id="leftClick" onmouseleave="hide(this)">
+        <div class="relative">
+            <span onclick="back()">Back</span>
+            <span onclick="forward()">Forward</span>
+            <span onclick="addCharacter()">Add Character</span>
+            <span onclick="removeCharacter()">Remove Character</span>
+        </div>
+    </div>
+
+    <script src="js/globalVariables.js"></script>
+    <script src="js/info.js"></script>
+    <script src="js/leftClick.js"></script>
+</body>
+</html>

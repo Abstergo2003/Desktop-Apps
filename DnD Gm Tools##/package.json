@@ -1,0 +1,56 @@
+{
+  "name": "gmtools",
+  "productName": "GM Tools For DnD##",
+  "version": "1.0.0",
+  "description": "My Electron application description",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\"",
+    "build": "electron-builder"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Abstergo2003",
+    "email": "radek_korszla@o2.pl"
+  },
+  "build": {
+    "appId": "GM Tools For DnD##",
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "installerIcon": "icon.ico",
+      "uninstallerIcon": "icon.ico",
+      "uninstallDisplayName": "GM Tools For DnD##",
+      "license": "license.md",
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "electron-packager": "^17.1.1",
+    "electron-squirrel-startup": "^1.0.0",
+    "express": "^4.18.2",
+    "socket.io": "^4.6.1",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.1.1",
+    "@electron-forge/maker-deb": "^6.1.1",
+    "@electron-forge/maker-rpm": "^6.1.1",
+    "@electron-forge/maker-squirrel": "^6.1.1",
+    "@electron-forge/maker-zip": "^6.1.1",
+    "electron": "24.1.2",
+    "electron-builder": "^24.6.4",
+    "electron-wix-msi": "^5.0.0"
+  }
+}

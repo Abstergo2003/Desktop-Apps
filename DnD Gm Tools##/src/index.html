@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="scroll.css">
+</head>
+<body>
+    <h1>Your companies</h1>
+
+    <div class="company" style="vertical-align: top; margin-top: 17vh; transform: translateY(-50%);" onclick="newCompany()">
+        <h2>Add new</h2>
+    </div>
+
+    <script>
+        // helping/prettifying functions
+        const {mkdir, writeFileSync} = window.fs
+        function newFolder(path) {
+            mkdir(path, (err)=>{
+                if (err) { 
+                    return console.error(err); 
+                } 
+                console.log('Directory created successfully!'); 
+            })
+        }
+
+        function newFile(path, data) {
+            writeFileSync(path, JSON.stringify(data))
+        }   
+    </script>
+
+    <script>
+        // check first run and get saves path
+        var saves = localStorage.getItem('savesPath')
+        if (!saves) {
+            window.electron.ipcRenderer.send('askPath');
+            console.log('first run')
+        }
+
+        window.electron.ipcRenderer.on('userData',function (event, userData) {
+            localStorage.setItem('savesPath', userData + '\\saves')
+            newFolder(userData + '\\saves')
+        })
+    </script>
+
+    <script>
+        // create new save
+        function newCompany() {
+            const currentDate = new Date();
+            const timestamp = currentDate.getTime();
+            savesPath = localStorage.getItem('savesPath')
+            var newSave = savesPath + `\\${timestamp}`
+            var maps = newSave + '\\maps'
+            var sounds = newSave + '\\sounds'
+            newFolder(newSave)
+            newFolder(maps)
+            newFolder(sounds)
+            newFile(newSave + '\\characters.json', [])
+            newFile(newSave + '\\fight.json', {tray:[], area:[], size: 30})
+            newFile(newSave + '\\items.json', [])
+            newFile(newSave + '\\main.json', {"title":"Title","villain":"Villain","location":"Location","overallQuest":"Main Quest","currentQuest":"Current Quest","currentSession":"currentSession","expectedSessions":"Max Sessions","description":"Description","hasICON":false})
+            newFile(newSave + '\\mainMap.json', [])
+            newFile(newSave + '\\quests.json', [])
+            loadCompany(timestamp)
+        }
+    </script>
+
+    <script>
+        const {readdir, readFileSync} = window.fs
+        const {join} = window.path
+        function readSaves() {
+            var container = document.body
+            var savesPath = localStorage.getItem('savesPath')
+            var saves = readdir(savesPath, (err, files)=>{
+                if (err) {
+                    console.log(err)
+                } else {
+                    files.forEach(file => {
+                        var path = savesPath + `\\${file}\\main.json`
+                        var info = JSON.parse(readFileSync(path,'utf-8'))
+                        if (info.hasICON) {
+                            let img = join(savesPath, file, 'icon.png')
+                            const contents = fs.readFileSync(img, {encoding: 'base64'});
+                            icon = `data:image/jpeg;base64,${contents}`
+                        } else {
+                            var icon = 'default.jpg'
+                        }
+                        container.innerHTML += `
+                            <div class="company" id=${file} onclick="loadCompany(this.id)">
+                                <img src="${icon}"><br>
+                                <span style="width: 90%">${info.title}</span><br>
+                                <span style="width: calc(40% - 4px); margin-right: 0; margin-bottom: 1vh;">${info.villain}</span>
+                                <span style="width: calc(40% - 4px); margin-left: 10%">${info.location}</span>
+                            </div>`
+                    });
+                }
+            })
+        }
+
+        function loadCompany(id) {
+            localStorage.setItem('currentSave', id)
+            window.location.href = 'main\\index.html'
+        }
+
+        readSaves()
+    </script>
+</body>
+</html>

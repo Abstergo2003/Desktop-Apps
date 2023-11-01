@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Other Tools</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../scroll.css">
+    <script src="js/const.js"></script>
+</head>
+<body>
+    <div class="Generator" style="left: 0">
+        <div class="button" style="margin-right: 0.5vw;" onclick="generateMaleName()">Generate Male Name</div>
+        <div class="button" style="margin-left: 0.5vw;" onclick="generateFemaleName()">Generate Female Name</div>
+        <textarea spellcheck="false" id="names" placeholder="Randomly Generated Names..."></textarea>
+    </div>
+
+    <div class="Generator" style="left: 25vw">
+        <div class="button" onclick="generateEncounter()">Generate Random Encounter</div>
+        <textarea spellcheck="false" id="encounter" placeholder="Random Encounter..."></textarea>
+    </div>
+
+    <div class="Generator" style="left: 50vw">
+        <div class="button" onclick="generateFight()">Generate Random Fight</div>
+        <textarea spellcheck="false" id="fight" placeholder="Random Fight..."></textarea>
+    </div>
+
+    <div id="leftClick" onmouseleave="hide(this)">
+        <div class="relative">
+            <span onclick="back()">Go Back</span>
+            <span onclick="forward()">Go Forward</span>
+        </div>
+    </div>
+
+    <script src="js/leftClick.js"></script>
+    <script src="js/generators.js"></script>
+</body>
+</html>

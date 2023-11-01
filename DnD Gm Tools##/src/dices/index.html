@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dices</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../scroll.css">
+</head>
+<body>
+    <div class="Generator">
+        <div class="button">Dices</div><br>
+        <div class="button" onclick="dice(2)">Dice 2</div>
+        <div class="button" onclick="dice(4)">Dice 4</div>
+        <div class="button" onclick="dice(6)">Dice 6</div>
+        <div class="button" onclick="dice(8)">Dice 8</div>
+        <div class="button" onclick="dice(10)">Dice 10</div>
+        <div class="button" onclick="dice(12)">Dice 12</div>
+        <div class="button" onclick="dice(20)">Dice 20</div>
+        <div class="button" onclick="dice(100)">Dice 100</div><br>
+        <div class="button" onclick="diceCustom()">Custom</div><input type="number" value="555">
+        <textarea spellcheck="false" id="dice" style="height: 59vh;" placeholder="Dice Logs..."></textarea>
+    </div>
+
+    <script src="js/dice.js"></script>
+</body>
+</html>

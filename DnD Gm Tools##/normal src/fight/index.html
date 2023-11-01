@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../scroll.css">
+</head>
+<body>
+        <div class="tracker">
+            <form action="" onsubmit="addCharacter()">
+                <input type="text" placeholder="Add your character here..." id="add-character-name">
+            </form>
+        </div>
+        <div class="tracker-options">
+            <span>Include Players</span>
+            <input type="checkbox" id="includePlayers" onchange="include(this)">
+            <button onclick="rollInit(characters)">Dice Init</button>
+            <button onclick="sortByInit(characters)">Sort by initative</button>
+            <button onclick="tourHandling()">Next</button>
+        </div>
+
+        <div class="stats">
+            <img src="img/boss.png" id="stats-img"><br>
+            <input id="stats-name"><br><br>
+            <div class="character-ac inspect"><input type="number" style="width: 5vh; border: none;" id="stats-ac"></div>
+            <div class="character-init inspect"><input type="number" style="width: 5vh; border: none;" id="stats-init"><img src="img/initiative.png"></div>
+            <div class="outer inspect-health">
+                <span class="inspect-span" id="stats-health"><input type="number" id="currentHealth" style="font-size: 15px; width: 10vh; border: none;">/<input type="number" id="maxHealth" style="font-size: 15px; width: 10vh; border: none;"></span>
+                <div class="inner" id="stats-health-indicator"></div>
+            </div>
+            <textarea placeholder="Weaknesses/Resistances" id="stats-defense"></textarea>
+            <textarea placeholder="Attack Bonusses" id="stats-offense"></textarea>
+            <textarea class="special" placeholder="Other Notes" id="stats-other"></textarea>
+        </div>
+
+        <div class="fight">
+            <div class="holder">
+                <div class="area" id="area"></div>
+
+                <div class="leftPanel">
+                    <span>20ft</span><span>19ft</span><span>18ft</span><span>17ft</span><span>16ft</span><span>15ft</span><span>14ft</span><span>13ft</span><span>12ft</span><span>11ft</span><span>10ft</span><span>9ft</span><span>8ft</span><span>7ft</span><span>6ft</span><span>5ft</span><span>4ft</span><span>3ft</span><span>2ft</span><span>1ft</span>
+                </div>
+
+                <div class="topPanel">
+                    <span>20ft</span><span>19ft</span><span>18ft</span><span>17ft</span><span>16ft</span><span>15ft</span><span>14ft</span><span>13ft</span><span>12ft</span><span>11ft</span><span>10ft</span><span>9ft</span><span>8ft</span><span>7ft</span><span>6ft</span><span>5ft</span><span>4ft</span><span>3ft</span><span>2ft</span><span>1ft</span>
+                </div>
+
+                <div class="bottomPanel">
+                    <span>20ft</span><span>19ft</span><span>18ft</span><span>17ft</span><span>16ft</span><span>15ft</span><span>14ft</span><span>13ft</span><span>12ft</span><span>11ft</span><span>10ft</span><span>9ft</span><span>8ft</span><span>7ft</span><span>6ft</span><span>5ft</span><span>4ft</span><span>3ft</span><span>2ft</span><span>1ft</span>
+                </div>
+
+                <div class="rightPanel">
+                    <span>20ft</span><span>19ft</span><span>18ft</span><span>17ft</span><span>16ft</span><span>15ft</span><span>14ft</span><span>13ft</span><span>12ft</span><span>11ft</span><span>10ft</span><span>9ft</span><span>8ft</span><span>7ft</span><span>6ft</span><span>5ft</span><span>4ft</span><span>3ft</span><span>2ft</span><span>1ft</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="leftClick" onmouseleave="hide(this)">
+            <div class="relative">
+                <span onclick="back()">Go Back</span>
+                <span onclick="forward()">Go Forward</span>
+                <span onclick="expandSize()">Set Area Size</span>
+                <span onclick="deleteFromMap()">Delete From Map</span>
+                <span onclick="deleteFromTray()">Delete From Tray</span>
+                <span onclick="expandInsert(this, event)">Insert...</span>
+            </div>
+        </div>
+
+        <div class="typeChooser">
+            <img src="img/boss.png" type="boss">
+            <img src="img/monster.png" type="monster">
+            <img src="img/NPC.png" type="NPC">
+            <img src="img/pet.png" type="pet">
+            <img src="img/player.png" type="player">
+        </div>
+    <script src="js/globalVariables.js"></script>
+    <script src="js/leftClick.js"></script>
+    <script src="js/initative.js"></script>
+    <script src="js/fightPanel.js"></script>
+    <script src="js/details.js"></script>
+    <script></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Items</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../scroll.css">
+</head>
+<body>
+    <div class="select">
+        <div class="sort" id="weapon"></div><div class="sort" id="magic"></div><div class="sort" id="consumable"></div><div class="sort" id="other"></div><div class="sort" id="all"></div>
+        <div class="list"></div>
+    </div>
+
+    <div class="inspect">
+        <!--title, cost, type, rarity, requirements, attune, description-->
+        <img src="img/weapon.png" id="inspectICON"><br>
+        <div class="info">
+            <span>Name:</span><br>
+            <input type="text" id="inspectName">
+        </div>
+        <div class="info">
+            <span>Cost:</span><br>
+            <input type="text" id="inspectCost" style="color: var(--legendary) !important">
+        </div>
+        <div class="info">
+            <span>Type:</span><br>
+            <select name="" id="inspectType">
+                <option value="weapon">Weapon</option>
+                <option value="magic">Magic</option>
+                <option value="consumable">Consumable</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div class="info">
+            <span>Rarity:</span><br>
+            <select name="" id="inspectRarity">
+                <option value="common" style="color: var(--common)">Common</option>
+                <option value="uncommon" style="color: var(--uncommon)">Uncommon</option>
+                <option value="rare" style="color: var(--rare)">Rare</option>
+                <option value="veryRare" style="color: var(--veryRare)">Very Rare</option>
+                <option value="legendary" style="color: var(--legendary)">Legendary</option>
+                <option value="artifact" style="color: var(--artifact)">Artifact</option>
+                <option value="unique" style="color: var(--unique)">Unique</option>
+            </select>
+        </div>
+        <div class="info">
+            <span>Requirements:</span><br>
+            <input type="text" id="inspectRequirements">
+        </div>
+        <div class="info">
+            <span>Attune:</span><br>
+            <input type="text" id="inspectAttune">
+        </div>
+        <div class="description">
+            <span>Description:</span><br>
+            <textarea name="" id="inspectDescription"></textarea>
+        </div>
+    </div>
+
+    <div id="leftClick" onmouseleave="hide(this)">
+        <div class="relative">
+            <span onclick="back()">Back</span>
+            <span onclick="forward()">Forward</span>
+            <span onclick="addItem()">Add Item</span>
+            <span onclick="removeItem()">Remove Item</span>
+        </div>
+    </div>
+
+    <script src="js/globalVariables.js"></script>
+    <script src="js/info.js"></script>
+    <script src="js/leftClick.js"></script>
+</body>
+</html>

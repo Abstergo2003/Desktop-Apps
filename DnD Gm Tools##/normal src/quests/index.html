@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quests</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../scroll.css">
+</head>
+<body>
+    <div class="side">
+        <!--<div class="category" style="height: calc(8vh - 40px)" id="random">
+            <span onclick="expand(this.id)" id="span-random">></span>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="Main">
+            <div class="quest" onclick="inspect(this.id)">Random Title</div>
+            <form onsubmit="return false" id="add-random">
+                <input type="text" placeholder="Add Qest">
+                <input type="submit">
+            </form>
+        </div>-->
+        <form id="cat">
+            <input type="text" placeholder="Add Category" id="addCategory">
+            <input type="submit">
+        </form>
+    </div>
+    <div class="inspect">
+        <div class="small">
+            <span>Name:</span><br>
+            <input type="text" id="name" oninput="updateQ()">
+        </div>
+        <div class="small">
+            <span>Goal:</span><br>
+            <input type="text" id="goal" oninput="updateQ()">
+        </div>
+        <div class="small">
+            <span>Rewards:</span><br>
+            <input type="text" id="rewards" oninput="updateQ()">
+        </div>
+        <div class="small">
+            <span>Expierience:</span><br>
+            <input type="text" id="experience" oninput="updateQ()">
+        </div>
+        <div class="small">
+            <span>Minimal Requirements:</span><br>
+            <input type="text" id="requirements" oninput="updateQ()">
+        </div>
+        <div class="small">
+            <span>Employer:</span><br>
+            <input type="text" id="employer" oninput="updateQ()">
+        </div>
+        <div class="state" style="text-align: center; background-color: var(--green);">
+            <span>Completion State:</span>
+            <table>
+                <tr>
+                    <td><input type="radio" name="state" class="nic" oninput="updateQ()"></td>
+                    <td><input type="radio" name="state" class="nic" oninput="updateQ()"></td>
+                    <td><input type="radio" name="state" class="nic" oninput="updateQ()"></td>
+                    <td><input type="radio" name="state" class="nic" oninput="updateQ()"></td>
+                </tr>
+                <tr>
+                    <td>Not Yet Started</td>
+                    <td>In Progress</td>
+                    <td>Success</td>
+                    <td>Fail</td>
+                </tr>
+            </table>
+        </div>
+        <div class="state">
+            <span>Choose Location</span>
+            <select id="location" onchange="updateQ()">
+                <option value="default">Choose Loaction</option>
+            </select>
+        </div>
+        <div class="big">
+            <span>Notes:</span><br>
+            <textarea id="notes" oninput="updateQ()"></textarea>
+        </div>
+        <div class="big">
+            <span>Completion Steps:</span><br>
+            <textarea id="completionSteps" oninput="updateQ()"></textarea>
+        </div>
+    </div>
+
+    <div id="leftClick" onmouseleave="hide(this)">
+        <div class="relative">
+            <span onclick="back()">Go Back</span>
+            <span onclick="forward()">Go Forward</span>
+            <span onclick="deleteCategory()">Delete Category</span>
+            <span onclick="deleteQuest()">Delete Quest</span>
+        </div>
+    </div>
+
+    <script src="js/globalVariables.js"></script>
+    <script src="js/leftClick.js"></script>
+    <script src="js/list.js"></script>
+</body>
+</html>

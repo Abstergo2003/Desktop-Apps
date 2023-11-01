@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound Center</title>
+    <link rel="stylesheet" href="stylec.css">
+    <link rel="stylesheet" href="../scroll.css">
+</head>
+<body>
+    <div class="temp">
+        <div class="availible">
+            <span path="../sounds/army.mp3">Army</span>
+            <span path="../sounds/campfire.mp3">Campfire</span>
+            <span path="../sounds/city.mp3">City</span>
+            <span path="../sounds/desert.mp3">Desert</span>
+            <span path="../sounds/fight.mp3">Fight</span>
+            <span path="../sounds/forest.mp3">Forest</span>
+            <span path="../sounds/music.mp3">Music</span>
+            <span path="../sounds/sneaky.mp3">Sneaky</span>
+            <span path="../sounds/snowlands.mp3">Snowlands</span>
+            <span path="../sounds/tavern.mp3">Tavern</span>
+            <span class="add" onclick="addMore()">Add More...</span>
+        </div>
+        <div class="controlsContainer">
+            <div class="controls">
+                <span id="mainName">Army</span>
+                <div class="hidder">
+                    <div class="inner" id="innerMainCompletion"></div>
+                    <input type="range" id="mainCompletion" value="0">
+                </div>
+                <div class="hidder">
+                    <div class="inner" id="innerMainVolume" style="width: 50%"></div>
+                    <input type="range" id="mainVolume">
+                </div>
+                <div class="button" id="loopMain"><img src="img/repeat.svg"></div>
+                <div class="button" id="playMain"><img src="img/play.svg" style="width: 120%; margin: -10%"></div>
+            </div>
+            <div class="controls">
+                <span id="subName">Sneaky</span>
+                <div class="hidder">
+                    <div class="inner" id="innerSubCompletion"></div>
+                    <input type="range" id="subCompletion" value="0">
+                </div>
+                <div class="hidder">
+                    <div class="inner" id="innerSubVolume" style="width: 50%"></div>
+                    <input type="range" id="subVolume">
+                </div>
+                <div class="button" id="loopSub"><img src="img/repeat.svg"></div>
+                <div class="button" id="playSub"><img src="img/play.svg" style="width: 120%; margin: -10%"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="leftClick" onmouseleave="hide(this)">
+        <div class="relative">
+            <span onclick="playAsMain()">Play As Main</span>
+            <span onclick="playAsSub()">Play As Sub</span>
+        </div>
+    </div>
+
+    <audio src="../sounds/music.mp3" id="main"></audio>
+    <audio src="../sounds/campfire.mp3" id="sub"></audio>
+
+    <script src="js/globalVariables.js"></script>
+    <script src="js/leftClick.js"></script>
+    <script src="js/sounds.js"></script>
+</body>
+</html>

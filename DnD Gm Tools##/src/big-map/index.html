@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../scroll.css">
+</head>
+<body>
+    <div class="wrapper"></div>
+
+    <div id="leftClick" onmouseleave="hide(this)">
+        <div class="relative">
+            <span onclick="back()">Go Back</span>
+            <span onclick="forward()">Go Forward</span>
+            <span onclick="deleteFromMap()">Delete From Map</span>
+            <span onclick="createSubMap('B')">Create Big Sub Map</span>
+            <span onclick="createSubMap('S')">Create Small Sub Map</span>
+            <span onclick="tool = 'move'">Set to MOVE mode</span>
+            <span onclick="changeBackgroundImage()">Change Background Image</span>
+            <!--<span>Play Party Movements</span>-->
+            <span onclick="expandInsert(this, event)">Insert...</span>
+        </div>
+    </div>
+
+    <!--<div class="tracker"></div>-->
+    <script src="js/globalVariables.js"></script>
+    <script src="js/leftClick.js"></script>
+    <script src="js/objects.js"></script>
+</body>
+</html>
