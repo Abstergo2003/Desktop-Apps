@@ -17,7 +17,7 @@ function loadType(type) {
             var item = SortingBoxes[types[j]][i]
             if (item.type == type) {
                 container.innerHTML += 
-                `<div class="item" id="${item.id}">
+                `<div class="item" id="${item.id}" onclick="inspect(this.id)">
                     <span style="color: var(--${item.rarity})">${item.name}</span>
                     <span tag="cost">${item.cost}</span>
                     <img src="img/${item.type}.png">

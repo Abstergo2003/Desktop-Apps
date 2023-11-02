@@ -54,8 +54,7 @@ function addToMap(type, e) {
     var left = clickX - areaPosition.x
     var top = clickY - areaPosition.y
     const date = new Date()
-    const timestamp = date.getTime()
-    
+    const timestamp = date.getTime() 
     if (type != 'Water' && type != 'Mud' && type != 'Hole' && type != 'Rock') {
         var elem = document.createElement('div')
         elem.classList.add('areaObject')
@@ -64,6 +63,11 @@ function addToMap(type, e) {
         elem.style.width = data.size + 'px'
         elem.style.left = left + 'px'
         elem.style.top = top + 'px'
+        elem.style.filter += `invert(${Math.floor(Math.random()*100)}%)`
+        elem.style.filter += `sepia(${Math.floor(Math.random()*100)}%)`
+        elem.style.filter += `saturate(${Math.floor(Math.random()*2000)}%)`
+        elem.style.filter += `hue-rotate(${Math.floor(Math.random()*360)}deg)`
+        elem.style.filter += `contrast(${Math.floor(Math.random()*200)}%);`
         elem.id = timestamp
         elem.setAttribute('movable', true)
         document.getElementById('area').append(elem)

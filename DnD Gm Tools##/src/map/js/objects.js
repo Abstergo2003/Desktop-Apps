@@ -22,17 +22,18 @@ loadObjects()
 
 async function setSubMap(map, id) {
     if (tool != 'cursor') return 0
-    if (map == 'null') {
-        console.log('no mark')
-        return 0
-    } else if (map == 'B') {
+    
+    if (map == 'B') {
         await writeFileSync(tempPath, JSON.stringify(data))
         localStorage.setItem('bSubMap', id)
         location.href = '../big-map/index.html'
-    } else {
+    } else if (map == 'S') {
         await writeFileSync(tempPath, JSON.stringify(data))
         localStorage.setItem('sSubMap', id)
         location.href = '../small-map/index.html'
+    } else {
+        console.log('no mark')
+        return 0
     }
 }
 
