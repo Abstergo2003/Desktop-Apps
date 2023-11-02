@@ -72,6 +72,8 @@ function deleteFromMap() {
 function addToMap(type) {
     if (clickArea != 'area') return 0
 
+    const date = new Date()
+    const timestamp = date.getTime()
     var left = clickX
     var top = clickY
     var elem = document.createElement('div')
@@ -79,10 +81,15 @@ function addToMap(type) {
     elem.classList.add(`area${type}`)
     elem.style.left = left + 'px'
     elem.style.top = top + 'px'
+    elem.id = timestamp
+    elem.addEventListener('mouseenter', (e)=>{
+        showItem(timestamp, e)
+    })
+    elem.addEventListener('mouseleave', ()=>{
+        document.querySelector('.info').style.left = '-1200px'
+    })
     document.getElementById('area').append(elem)
 
-    const date = new Date()
-    const timestamp = date.getTime()
     var obj = {
         id: timestamp,
         left: left,
@@ -136,3 +143,27 @@ function showGrid() {
         elem.classList.remove('nogrid')
     })
 }
+function selectContainer(e) {
+    if (target.classList[0] != 'areaObject') return 0
+    if (isWallsMode) return 0
+
+    const isID = (obj) => obj.id == target.id
+    const index = data.objects.findIndex(isID)
+    container = index
+    document.querySelector('.items').style.left = e.clientX + 'px'
+    document.querySelector('.items').style.top = e.clientY + 'px'
+    hide(document.getElementById('leftClick'))
+}
+function addItemInside(id) {
+    console.log(id)
+    data.objects[container].item = id
+    document.querySelector('.items').style.left = '-1200px'
+}
+
+function loadItems() {
+    var itemHolder = document.querySelector('.items')
+    for (var i = 0; i<items.length; i++) {
+        itemHolder.innerHTML += `<span onclick="addItemInside(${items[i].id})">${items[i].name}</span>`
+    }
+}
+loadItems()

@@ -10,35 +10,13 @@
 <body>
     <div class="holder"></div>
 
-    <!--<div class="selectPanel" id="walls">
-        <h1>Choose Wall Type</h1>
-        <div class="container">
-            <img src="img/weather_cancer.svg" onclick="hideWallSelection(this.src)">
-            <img src="img/add.svg" onclick="hideWallSelection(this.src)">
-            <img src="img/add.svg" onclick="hideWallSelection(this.src)">
-            <img src="img/add.svg" onclick="hideWallSelection(this.src)">
-            <img src="img/upload.svg" onclick="uploadWall()">
-        </div>
-    </div>
-
-    <div class="selectPanel" id="background">
-        <h1>Choose Wall Type</h1>
-        <div class="container">
-            <img src="img/weather_cancer.svg" onclick="hideBackgroundSelection(this.src)">
-            <img src="img/add.svg" onclick="hideBackgroundSelection(this.src)">
-            <img src="img/add.svg" onclick="hideBackgroundSelection(this.src)">
-            <img src="img/add.svg" onclick="hideBackgroundSelection(this.src)">
-            <img src="img/upload.svg" onclick="uploadBackground()">
-        </div>
-    </div>-->
-
-    <div class="area" id="area"> 
-    </div>
+    <div class="area" id="area"></div>
 
     <div id="leftClick" onmouseleave="hide(this)">
         <div class="relative">
             <span onclick="back()">Go Back</span>
             <span onclick="forward()">Go Forward</span>
+            <span onclick="selectContainer(event)">Add Item Inside</span>
             <span onclick="changeBackground()">Change Background</span>
             <span onclick="expandInsert(this, event)">Walls Mode</span>
             <span onclick="showGrid()">Show Grid</span>
@@ -49,6 +27,14 @@
         </div>
     </div>
 
+    <div class="items"></div>
+
+    <div class="info" onmouseleave="this.style.left = -1200 + 'px'">
+        <img src="img/consumable.png"><br>
+        <span>Imie</span><br>
+        <span>Rarity</span><br>
+        <span>Requirements</span>
+    </div>
     <script src="js/globalVariables.js"></script>
     <script src="js/walls.js"></script>
     <script src="js/objects.js"></script>

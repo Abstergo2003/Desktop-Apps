@@ -6,9 +6,13 @@ let ID = null
 let isDown = false
 let isWallsMode = false
 let url = undefined
+let container = undefined
 const savesPath = localStorage.getItem('savesPath')
 const currenSave = localStorage.getItem('currentSave')
 const subMap = localStorage.getItem('sSubMap')
 const tempPath = join(savesPath, currenSave, 'maps', subMap)
 const mapPath = join(tempPath, 'map.json')
+const itemsPath = join(savesPath, currenSave, 'items.json')
+const items = JSON.parse(readFileSync(itemsPath, 'utf-8'))
 let data = JSON.parse(readFileSync(mapPath, 'utf-8'))
+
