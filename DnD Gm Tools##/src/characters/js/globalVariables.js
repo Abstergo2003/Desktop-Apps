@@ -1,4 +1,4 @@
-const {readFileSync, writeFileSync} = window.fs
+const {readFileSync, writeFileSync, existsSync, copyFile} = window.fs
 const {join} = window.path
 const savesPath = localStorage.getItem('savesPath')
 const currentSave = localStorage.getItem('currentSave')

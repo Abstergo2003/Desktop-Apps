@@ -1,0 +1,58 @@
+#leftClick {
+    position: absolute;
+    top: 200px;
+    left: -2000px;
+    width: 12vw;
+    height: auto;
+    background-color: var(--green);
+    outline: var(--white) 2px solid;
+    text-align: center;
+    z-index: 999;
+}
+#leftClick span {
+    border-bottom: 1px solid var(--white);
+    width: calc(100% - 4px);
+    display: block;
+    transition: background 0.1s ease-in-out;
+    transition: color 0.1s ease-in-out;
+    padding: 2px;
+    text-align: left;
+    font-size: 1vw;
+    height: 1vw;
+}
+#leftClick span:hover {
+    background-color: var(--grey);
+    color: var(--white);
+}
+#leftClick span:active {
+    background-color: var(--black);
+}
+#leftClick input {
+    position: absolute;
+    top: calc(1vw + 4px);
+    left: calc(12.4vw - 5px);
+    border: 2px solid var(--white);
+    width: calc(12.4vw - 4px);
+    display: block;
+    transition: background 0.1s ease-in-out;
+    transition: color 0.1s ease-in-out;
+    padding: 2px;
+    text-align: left;
+    font-size: 1vw;
+    height: 1vw;
+    background-color: var(--green);
+    outline: none;
+}
+.option {
+    display: none;
+    position: absolute;
+    border: 2px solid var(--white);
+    width: calc(100% - 4px);
+    display: block;
+    transition: background 0.1s ease-in-out;
+    transition: color 0.1s ease-in-out;
+    padding: 2px;
+    text-align: left;
+    font-size: 1vw;
+    background-color: var(--green);
+}

@@ -12,6 +12,7 @@ const createWindow = () => {
     width: 1920,
     height: 1080,
     autoHideMenuBar : true,
+    icon: path.join(__dirname, '..\\' , 'icon.ico'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
@@ -55,10 +56,28 @@ const createDiceWindow = () => {
   })
   diceWindow.loadFile(path.join(__dirname, 'dices', 'index.html'))
 }
+const createPDFwindow = (PDFpath) => {
+  const PDFwindow = new BrowserWindow({
+    width: 576,
+    height: 1080,
+    autoHideMenuBar : true,
+    icon: path.join(__dirname.replace('/src', ''), 'icon.ico'),
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: true,
+      devTools: true,
+    },
+  })
+  PDFwindow.loadFile(PDFpath)
+}
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', createWindow);
+
+ipcMain.on('openPDF', (event, PDFpath)=>{
+  createPDFwindow(PDFpath)
+})
 ipcMain.on('openSoundsPanel', createSoundsWindow)
 ipcMain.on('openDices', createDiceWindow)
 // Quit when all windows are closed, except on macOS. There, it's common

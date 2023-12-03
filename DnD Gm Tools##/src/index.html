@@ -3,20 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>DnD GM Tools##</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="scroll.css">
+    <link rel="stylesheet" href="leftClick.css">
 </head>
 <body>
-    <h1>Your companies</h1>
+    <h1>Your campaigns</h1>
 
     <div class="company" style="vertical-align: top; margin-top: 17vh; transform: translateY(-50%);" onclick="newCompany()">
         <h2>Add new</h2>
     </div>
 
+    <div id="leftClick" onmouseleave="this.style.left = '-1200px'">
+        <div class="relative">
+            <span onclick="back()">Back</span>
+            <span onclick="forward()">Forward</span>
+            <span onclick="deleteCampaign()">Delete Campaign</span>
+        </div>
+    </div>
+
+    <script>
+        const savesPath = localStorage.getItem('savesPath')
+        const {mkdir, writeFileSync, rmSync} = window.fs
+        document.addEventListener('contextmenu',(e) =>  {
+            e.preventDefault()
+            target = e.target
+            var options = document.getElementById('leftClick')
+            if (e.pageX > 1100) {
+                options.style.left = `calc(-12vw + 10px + ${e.pageX}px)`
+            } else {
+                options.style.left = e.pageX - 10 + 'px'
+            }
+            if (e.pageY > 600) {
+                options.style.top = e.pageY - options.offsetHeight + 10 + 'px'
+            } else {
+                options.style.top = e.pageY - 10 + 'px'
+            }
+        });
+
+        function back() {
+            history.back()
+        }
+
+        function forward() {
+            history.forward()
+        }
+
+        function deleteCampaign() {
+            if (target.classList[0] != 'company') {
+                target = target.parentNode
+                if (target.classList[0] != 'company') {
+                    document.getElementById('leftClick').style.left = '-1200px'
+                    return 0
+                }
+            }
+            var id = target.id
+            
+            const dir = window.path.join(savesPath, id)
+            rmSync(dir, { recursive: true, force: true });
+            target.remove()
+            document.getElementById('leftClick').style.left = '-1200px'
+        }
+    </script>
+
     <script>
         // helping/prettifying functions
-        const {mkdir, writeFileSync} = window.fs
+        
         function newFolder(path) {
             mkdir(path, (err)=>{
                 if (err) { 
@@ -50,19 +103,21 @@
         function newCompany() {
             const currentDate = new Date();
             const timestamp = currentDate.getTime();
-            savesPath = localStorage.getItem('savesPath')
             var newSave = savesPath + `\\${timestamp}`
             var maps = newSave + '\\maps'
             var sounds = newSave + '\\sounds'
+            var characters = newSave + '\\characters'
             newFolder(newSave)
             newFolder(maps)
             newFolder(sounds)
+            newFolder(characters)
             newFile(newSave + '\\characters.json', [])
             newFile(newSave + '\\fight.json', {tray:[], area:[], size: 30})
             newFile(newSave + '\\items.json', [])
             newFile(newSave + '\\main.json', {"title":"Title","villain":"Villain","location":"Location","overallQuest":"Main Quest","currentQuest":"Current Quest","currentSession":"currentSession","expectedSessions":"Max Sessions","description":"Description","hasICON":false})
             newFile(newSave + '\\mainMap.json', [])
             newFile(newSave + '\\quests.json', [])
+            newFile(newSave + '\\quickLocations.json', [])
             loadCompany(timestamp)
         }
     </script>

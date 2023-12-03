@@ -6,6 +6,7 @@
     <title>Characters</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../scroll.css">
+    <link rel="stylesheet" href="../leftClick.css">
 </head>
 <body>
     <div class="select">
@@ -14,6 +15,7 @@
     </div>
 
     <div class="inspect">
+        <div class="pdf" onclick="openPDF()"></div>
         <img src="img/nonCombat.png" id="inspectICON"><br>
         <div class="info">
             <span>Name:</span><br>
@@ -85,11 +87,13 @@
             <span onclick="back()">Back</span>
             <span onclick="forward()">Forward</span>
             <span onclick="addCharacter()">Add Character</span>
+            <span onclick="newPDF()">New PDF</span>
             <span onclick="removeCharacter()">Remove Character</span>
         </div>
     </div>
 
     <script src="js/globalVariables.js"></script>
+    <script src="js/pdf.js"></script>
     <script src="js/info.js"></script>
     <script src="js/leftClick.js"></script>
 </body>

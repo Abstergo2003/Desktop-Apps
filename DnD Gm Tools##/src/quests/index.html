@@ -6,17 +6,10 @@
     <title>Quests</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../scroll.css">
+    <link rel="stylesheet" href="../leftClick.css">
 </head>
 <body>
     <div class="side">
-        <!--<div class="category" style="height: calc(8vh - 40px)" id="random">
-            <span onclick="expand(this.id)" id="span-random">></span>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="Main">
-            <div class="quest" onclick="inspect(this.id)">Random Title</div>
-            <form onsubmit="return false" id="add-random">
-                <input type="text" placeholder="Add Qest">
-                <input type="submit">
-            </form>
-        </div>-->
         <form id="cat">
             <input type="text" placeholder="Add Category" id="addCategory">
             <input type="submit">
@@ -67,7 +60,7 @@
         <div class="state">
             <span>Choose Location</span>
             <select id="location" onchange="updateQ()">
-                <option value="default">Choose Loaction</option>
+                <option value="default">Choose Location</option>
             </select>
         </div>
         <div class="big">

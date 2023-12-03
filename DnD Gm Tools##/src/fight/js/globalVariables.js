@@ -25,14 +25,15 @@ let data = JSON.parse(readFileSync(tempPath, 'utf-8'))
 var characters = data.tray
 var objects = data.area
 var tour = 0
+var isCanvasEditing
 document.addEventListener('keydown', (e)=>{
+    if (!isCanvasEditing) return 0
     if (e.keyCode == 13) {
         console.log('finishing editing')
         isDrawing = false
         var imgData = canvas.toDataURL()
         var result = objects.filter(obj => obj.id == canvas.id)[0]
         result.imgData = imgData
-        console.log(result)
         canvas.setAttribute('movable', true)
         canvas.removeEventListener('mousedown', startDrawing, true)
         canvas.removeEventListener('mousemove', drawing, true)

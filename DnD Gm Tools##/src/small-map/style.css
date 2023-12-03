@@ -1,4 +1,160 @@
-*{font-family:inherit;--black:#1B1B1E;--green:#58A4B0;--white:#D8DBE2;--grey:#373F51; --common:#1a5e68;--uncommon:rgb(15,110,15);--rare:rgb(11,11,121);--veryRare:rgb(120,120,230);--legendary:rgb(252,214,0);--artifact:rgb(151,17,17);--unique:#D8DBE2}body{width:100vw;height:100vh;padding:0;margin:0;background-color:var(--black);overflow:hidden}body::-webkit-scrollbar{display:none}.holder{position:absolute;top:0;left:0;width:100%;height:100vh;background-color:var(--grey);background-repeat:no-repeat;background-size:100% 100%}.elem{width:calc(5vh - 2px);height:calc(5vh - 2px);float:left;margin:0;padding:0;text-align:center;background-repeat:no-repeat;background-size:100% 100%}.grid{border:1px solid var(--white)}.nogrid{border:1px solid transparent}.selectPanel{position:absolute;top:-100vh;left:50vw;transform:translateX(-50%);width:50vw;height:90vh;background-color:var(--green);border-radius:5px;text-align:center;transition:all .2s ease-in-out;overflow:hidden;z-index:999}.selectPanel h1{color:var(--black)}.container{height:75vh;width:calc(100% - 20px);padding:10px;overflow:auto}.container img{width:20%;aspect-ratio:1.6;margin:5%}#leftClick{position:absolute;top:200px;left:-2000px;width:12vw;height:auto;background-color:var(--green);outline:var(--white) 2px solid;text-align:center;z-index:999}#leftClick span{border-bottom:1px solid var(--white);width:calc(100% - 4px);display:block;transition:background .1s ease-in-out;transition:color .1s ease-in-out;padding:2px;text-align:left;font-size:1vw;height:1vw}#leftClick span:hover{background-color:var(--grey);color:var(--white)}#leftClick span:active{background-color:var(--black)}#leftClick input{position:absolute;top:calc(1vw + 4px);left:calc(12.4vw - 5px);border:2px solid var(--white);width:calc(12.4vw - 4px);display:block;transition:background .1s ease-in-out;transition:color .1s ease-in-out;padding:2px;text-align:left;font-size:1vw;height:1vw;background-color:var(--green);outline:none}.option{display:none;position:absolute;border:2px solid var(--white);width:calc(100% - 4px);display:block;transition:background .1s ease-in-out;transition:color .1s ease-in-out;padding:2px;text-align:left;font-size:1vw;background-color:var(--green)}.area{position:relative;top:0;left:0;width:100vw;height:100vh;z-index:10}.areaObject{position:absolute;top:200px;left:200px;z-index:999;transform:translate(-50%,-50%);background-repeat:no-repeat;background-size:contain}.areaBoss{background-image:url(img/boss.png);width:7vh!important;height:7vh!important;border-radius:50%}.areaBed{background-image:url(img/bed.png);width:7.5vh!important;height:7.5vh!important}.areaBloodPool{background-image:url(img/bloodPool.png);width:5vh!important;height:5vh!important}.areaChest{background-image:url(img/chest.png);height:4vh!important;width:5vh}.areaCorpse{background-image:url(img/corpse.png);width:10vh!important;height:10vh!important}.areaDesk{background-image:url(img/desk.png);width:7.5vh!important;height:6vh!important}.areaWardrobe{background-image:url(img/wardrobe.png);height:10vh!important;aspect-ratio:1000/900}.areaWeapon{background-image:url(img/weapon.png);width:5vh!important;aspect-ratio:728/600}.areaPet{background-image:url(img/pet.png);width:4vh!important;aspect-ratio:1000/900}.areaEnemy{background-image:url(img/enemy.png);width:4vh!important;aspect-ratio:1000/900}.areaPlayer{background-image:url(img/player.png);width:4vh!important;aspect-ratio:1000/900}.areaNPC{background-image:url(img/NPC.png);width:4vh!important;aspect-ratio:1000/900}
+* {
+    font-family: inherit;
+    --black: #1b1b1e;
+    --green: #58a4b0;
+    --white: #d8dbe2;
+    --grey: #373f51;
+    --common: #1a5e68;
+    --uncommon: rgb(15, 110, 15);
+    --rare: rgb(11, 11, 121);
+    --veryRare: rgb(120, 120, 230);
+    --legendary: rgb(252, 214, 0);
+    --artifact: rgb(151, 17, 17);
+    --unique: #d8dbe2;
+}
+body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    background-color: var(--black);
+    overflow: hidden;
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+.holder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--grey);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.elem {
+    width: calc(5vh - 2px);
+    height: calc(5vh - 2px);
+    float: left;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.grid {
+    border: 1px solid var(--white);
+}
+.nogrid {
+    border: 1px solid transparent;
+}
+.selectPanel {
+    position: absolute;
+    top: -100vh;
+    left: 50vw;
+    transform: translateX(-50%);
+    width: 50vw;
+    height: 90vh;
+    background-color: var(--green);
+    border-radius: 5px;
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+    overflow: hidden;
+    z-index: 999;
+}
+.selectPanel h1 {
+    color: var(--black);
+}
+.container {
+    height: 75vh;
+    width: calc(100% - 20px);
+    padding: 10px;
+    overflow: auto;
+}
+.container img {
+    width: 20%;
+    aspect-ratio: 1.6;
+    margin: 5%;
+}
+.area {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+}
+.areaObject {
+    position: absolute;
+    top: 200px;
+    left: 200px;
+    z-index: 999;
+    transform: translate(-50%, -50%);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.areaBoss {
+    background-image: url(img/boss.png);
+    width: 7vh !important;
+    height: 7vh !important;
+    border-radius: 50%;
+}
+.areaBed {
+    background-image: url(img/bed.png);
+    width: 7.5vh !important;
+    height: 7.5vh !important;
+}
+.areaBloodPool {
+    background-image: url(img/bloodPool.png);
+    width: 5vh !important;
+    height: 5vh !important;
+}
+.areaChest {
+    background-image: url(img/chest.png);
+    height: 4vh !important;
+    width: 5vh;
+}
+.areaCorpse {
+    background-image: url(img/corpse.png);
+    width: 10vh !important;
+    height: 10vh !important;
+}
+.areaDesk {
+    background-image: url(img/desk.png);
+    width: 7.5vh !important;
+    height: 6vh !important;
+}
+.areaWardrobe {
+    background-image: url(img/wardrobe.png);
+    height: 10vh !important;
+    aspect-ratio: 1000/900;
+}
+.areaWeapon {
+    background-image: url(img/weapon.png);
+    width: 5vh !important;
+    aspect-ratio: 728/600;
+}
+.areaPet {
+    background-image: url(img/pet.png);
+    width: 4vh !important;
+    aspect-ratio: 1000/900;
+}
+.areaEnemy {
+    background-image: url(img/enemy.png);
+    width: 4vh !important;
+    aspect-ratio: 1000/900;
+}
+.areaPlayer {
+    background-image: url(img/player.png);
+    width: 4vh !important;
+    aspect-ratio: 1000/900;
+}
+.areaNPC {
+    background-image: url(img/NPC.png);
+    width: 4vh !important;
+    aspect-ratio: 1000/900;
+}
 .items {
     width: 100px;
     height: 200px;
@@ -19,15 +175,15 @@
     color: var(--black);
     line-height: 15px;
     font-size: 10px;
-    transition: all .1s ease-in-out;
+    transition: all 0.1s ease-in-out;
 }
 .items span:hover {
     background-color: var(--grey);
-    color: var(--white)
+    color: var(--white);
 }
 .items span:active {
     background-color: var(--black);
-    color: var(--white)
+    color: var(--white);
 }
 .info {
     width: 150px;
@@ -47,5 +203,4 @@
 }
 .info span {
     font-size: 15px;
-
 }

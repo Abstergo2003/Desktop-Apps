@@ -94,7 +94,7 @@ function addToMap(type, e) {
         ctx = elem.getContext('2d')
         elem.width = elem.offsetWidth
         elem.height = elem.offsetHeight
-
+        isCanvasEditing = true
         var obj = {
             type: 'canvas',
             left: left,
@@ -123,20 +123,19 @@ function deleteFromMap() {
 }
 
 async function deleteFromTray() {
-    if (target.classList[0] != 'character') {
-        var parent = await checkIFparent()
-        if (parent != 0) parent.remove()
-        hide(document.getElementById('leftClick'))
-        const isID = (element) => element.id == parent.id;
-        const index = characters.findIndex(isID)
-        characters.splice(index, 1)
-        return 0
+    for (var i = 0; i<7; i++) {
+        if (target.classList[0] == 'character') {
+            break
+        }
+        target = target.parentNode
     }
-    target.remove()
+    if (target.classList[0] != 'character') return 0
+
+    hide(document.getElementById('leftClick'))
     const isID = (element) => element.id == target.id;
     const index = characters.findIndex(isID)
     characters.splice(index, 1)
-    hide(document.getElementById('leftClick'))
+    target.remove()
 }
 
 function checkIFparent() {
@@ -160,6 +159,7 @@ async function back() {
     await writeFileSync(tempPath, JSON.stringify(data))
     history.back()
 }
+
 async function forward() {
     await writeFileSync(tempPath, JSON.stringify(data))
     history.forward()

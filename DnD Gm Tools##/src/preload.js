@@ -1,7 +1,7 @@
 const { contextBridge, ipcRenderer } = require('electron');
 const fs = require('fs');
 const path  = require('path')
-
+//const pdfreader = require('pdfreader')
 contextBridge.exposeInMainWorld("electron", {
     ipcRenderer: {
         ...ipcRenderer,
@@ -20,6 +20,8 @@ contextBridge.exposeInMainWorld('fs', {
     readFile: fs.readFile,
     readdir: fs.readdir,
     copyFile: fs.copyFile,
+    existsSync: fs.existsSync,
+    rmSync: fs.rmSync
 });
 
 contextBridge.exposeInMainWorld('path', {

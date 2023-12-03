@@ -1,1 +1,17 @@
-::-webkit-scrollbar{width:.3vw;border-radius:3px;transition:all 0.2s ease-in-out}::-webkit-scrollbar-track{background:var(--white);border-radius:3px}::-webkit-scrollbar-thumb{background:var(--green);border-radius:3px}::-webkit-scrollbar-thumb:hover{background:var(--green);border-radius:3px}
+::-webkit-scrollbar {
+    width: 0.3vw;
+    border-radius: 3px;
+    transition: all 0.2s ease-in-out;
+}
+::-webkit-scrollbar-track {
+    background: var(--white);
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--green);
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--green);
+    border-radius: 3px;
+}

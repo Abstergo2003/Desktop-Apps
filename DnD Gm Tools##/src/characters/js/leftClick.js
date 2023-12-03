@@ -25,6 +25,7 @@ async function back() {
     await writeFileSync(tempPath, JSON.stringify(items))
     history.back()
 }
+
 async function forward() {
     await writeFileSync(tempPath, JSON.stringify(items))
     history.forward()
@@ -56,6 +57,7 @@ function addCharacter() {
         </div>`
     hide(document.getElementById('leftClick'))
 }
+
 function removeCharacter() {
     if (target.classList[0] != 'item') {
         target = target.parentNode
@@ -69,4 +71,27 @@ function removeCharacter() {
     items.splice(index, 1)
     target.remove()
     hide(document.getElementById('leftClick'))
+}
+function newPDF() {
+    if (target.classList[0] != 'item') {
+        target = target.parentNode
+        if (target.classList[0] != 'item') {
+            console.log('wrong target')
+            return 0
+        }
+    }
+    var id = target.id
+    var input = document.createElement('input')
+    input.setAttribute('type', 'file')
+    input.setAttribute('accept', 'application/pdf')
+    input.click()
+    input.addEventListener('change', ()=>{
+        var source = input.files[0].path
+        var dest = join(savesPath, currentSave,'characters', `${id}.pdf`)
+        copyFile(source, dest, (err) => {
+            if (err) throw err;
+            console.log(`${source} was copied to ${dest}`);
+        })
+        input.remove()
+    })
 }
