@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        img {
+            width: 40px;
+            transform: translateY(-50%);
+            margin-top: 50px;
+            margin-left: 5px;
+            filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(342deg) brightness(102%) contrast(102%);
+            transition: all .3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <img src="left.svg">
+    <script>
+        window.electron.ipcRenderer.on('hide', ()=>{
+            console.log('hidden')
+            visible = false
+            document.querySelector('img').style.transform = 'translateY(-50%) rotate(360deg)'
+            reset()
+        })
+        var visible = false
+        async function change() {
+            if (visible) {
+                window.electron.ipcRenderer.send('makeInvisible');
+                visible = false
+                document.querySelector('img').style.transform = 'translateY(-50%) rotate(360deg)'
+                reset()
+            } else {
+                window.electron.ipcRenderer.send('makeVisible');
+                visible = true
+                document.querySelector('img').style.transform = 'translateY(-50%) rotate(180deg)'
+            }
+        }
+        function delay(time) {
+            return new Promise(resolve => setTimeout(resolve, time));
+        }
+        async function reset() {
+            await delay(300)
+            var img = document.querySelector('img')
+            img.style.transition = 'none'
+            await delay(100)
+            img.style.transform = 'translateY(-50%) rotate(0deg)'
+            await delay(100)
+            img.style.transition = 'all .3s ease-in-out'
+        }
+        document.addEventListener('click', change)
+    </script>
+</body>
+</html>
