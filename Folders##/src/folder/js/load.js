@@ -1,120 +1,192 @@
 async function load() {
+    console.log("started");
     var holder = document.querySelector('.holder')
-    for (obj in data) {
-        obj = data[obj]
-        console.log(obj.target)
-        const icon = await getIcon(obj.id)
-        holder.innerHTML += 
-            `<div class="icon" id="${obj.id}" >
-                <img src="data:image/jpeg;base64,${icon}" onclick="determineAction('${obj.target}', event)"><br>
-                <input value="${obj.name}">
-            </div>`
+    const data = await getData()
+    for (obj of data) {
+        console.log(obj.target);
+        const icon = await getIcon(obj.id);
+        loadElement(holder, obj, icon);
+        await delay(300);
     }
-    holder.innerHTML += 
-        `<div class="icon safe" onclick="addFile()">
-            <img src="img/add.svg" style="filter: invert(95%) sepia(94%) saturate(26%) hue-rotate(355deg) brightness(106%) contrast(107%);"><br>
-        </div>`
 }
 
-function determineAction(target, event) {
-    if (isCtrl) {
-        deleteShortcut(event.target)
+function loadElement(holder, obj, icon) {
+    if (obj.special != undefined) {
+        let iconHolder = document.createElement("div");
+        iconHolder.classList.add("iconHolder");
+
+        let iconDiv = document.createElement("div");
+        iconDiv.classList.add("icon");
+        iconDiv.classList.add("nodelete");
+        iconDiv.id = obj.id;
+        let img = document.createElement("img");
+        img.src = `data:image/jpeg;base64,${icon}`;
+        img.addEventListener("click", ()=>{
+            determineAction(`${obj.id}.lnk`, event, obj.special);
+        })
+        img.id = obj.id;
+        let input = document.createElement("input");
+        input.value = obj.name;
+
+        iconDiv.append(img);
+        iconDiv.append(input);
+
+        iconHolder.append(iconDiv);
+
+        holder.append(iconHolder);
     } else {
-        openF(target)
+        let iconHolder = document.createElement("div");
+        iconHolder.classList.add("iconHolder");
+
+        let iconDiv = document.createElement("div");
+        iconDiv.classList.add("icon");
+        iconDiv.id = obj.id;
+        let img = document.createElement("img");
+        img.src = `data:image/jpeg;base64,${icon}`;
+        img.addEventListener("click", ()=>{
+            determineAction(`${obj.id}.lnk`, event, obj.special);
+        })
+        img.id = obj.id;
+
+        let input = document.createElement("input");
+        input.value = obj.name;
+
+        iconDiv.append(img);
+        iconDiv.append(input);
+
+        iconHolder.append(iconDiv);
+
+        holder.append(iconHolder);
     }
+}
+
+function determineAction(target, event, special) {
+    if (isCtrl) {
+        deleteShortcut(event.target);
+    } else if (special != undefined){
+        specialCommand(special);
+    } else {
+        openF(target);
+    }
+}
+
+function specialCommand(special) {
+    invoke('run_command', {command: special})
 }
 
 async function openF(target) {
-    const exists = await existsSync(target)
-    if (!exists) {
-        target = target.replaceAll(' (x86)', '')
-    }
-    exec(`start "" "${target}"`, (error, stdout, stderr) => {
-        if (error) {
-            console.error(`Error: ${error.message}`);
-        }
-        console.log('File opened successfully');
-    });
+    const path = await window.__TAURI__.path.appLocalDataDir();
+    console.log(`start "${path}\\items\\${target}"`);
+    await invoke('run_command', {command: `start "${path}\\items\\${target}"`})
 }
 
-function addFile() {
-    var input = document.createElement('input')
-    window.electron.ipcRenderer.send('cantQuit');
-    input.setAttribute('type', 'file')
-    input.setAttribute('accept', '.lnk')
-    input.click()
-    input.addEventListener('change', ()=>{
-        // copy image and set it from appData
-        const type = input.files[0].type
-        if (type != '') return 0
-        const source = input.files[0].path
-        let name = input.files[0].name
-        name = name.slice(0, name.lastIndexOf('.'))
-        wsquery(source, function(error, properties) {
-            const target = properties.target.replaceAll('\\', '/')
-            window.electron.ipcRenderer.send('getIcon', target);
-            const date = new Date()
-            const timestamp = date.getTime()
-            obj = {
-                "name": name,
-                "target": target,
-                "id": timestamp
-            }
-            data.push(obj)
-            save()
-        })
-        input.remove()
-        window.electron.ipcRenderer.send('canQuit');
-    })
+async function addFile(target) {
+    if (target.indexOf(".lnk") == -1) {
+        return 0;
+    }
+    console.log("adding");
+    const date = new Date()
+    const timestamp = date.getTime()
+    const lastIndexS = target.lastIndexOf('\\')
+    obj = {
+        "name": target.slice(lastIndexS + 1).slice(0, target.slice(lastIndexS + 1).indexOf('.')),
+        "id": timestamp
+    }
+    console.log(JSON.stringify(obj));
+    await copyFile(target, `items\\${timestamp}.lnk`, {toPathBaseDir: BaseDirectory.AppLocalData});
+    console.log("copied");
+    let data = await getData();
+    data.push(obj)
+    await save(data)
+    console.log("saved data");
+    try {
+        let icon = await invoke('get_icon', {path: target});
+        console.log("icon got");
+        await remove(target);
+        console.log("removed");
+        await saveIcon(icon, timestamp);
+        console.log("saved icon");
+        let holder = document.querySelector(".holder");
+        loadElement(holder, obj, icon);
+    } catch (error) {
+        let icon = await getIcon();
+        console.log("icon got");
+        await remove(target);
+        console.log("removed");
+        let holder = document.querySelector(".holder");
+        loadElement(holder, obj, icon);
+    }
 }
 
 document.addEventListener('input', ()=>{
     clearTimeout(typingTimer);
-
     // Set a new timer
     typingTimer = setTimeout(function() {
         console.log('stopped typing saving data')
-        var shortcuts = document.querySelectorAll('.icon')
-        for (const sc of shortcuts) {
-            if (sc.classList[1] == 'safe') return 0
-            const isID = (elem) => elem.id == sc.id;
-            const index = data.findIndex(isID)
-            data[index].name = sc.querySelector('input').value
-            save()
-        }
+        updateFile()
     }, doneTypingInterval);
 })
+async function updateFile() {
+    var shortcuts = document.querySelectorAll('.icon')
+    let data = await getData()
+    for (const sc of shortcuts) {
+        if (sc.classList[1] === 'safe') continue;  // Skip this iteration if the class is 'safe'
+        const isID = (elem) => +elem.id === +sc.id;
+        const index = data.findIndex(isID);
+        data[index].name = sc.querySelector('input').value;
+    }
+    save(data)
+}   
 
-
-
-async function updateIcon(source, id) {
-    const base64 = await readFileSync(source, {encoding: 'base64'})
-    console.log(base64)
-    await writeFileSync(savesPath + `\\icons\\${id}.txt`, base64)
-    document.location.reload()
+async function updateIcon(id) {
+    canQuit = false
+    const target = await open({
+        multiple: false,
+        filters: [{
+            name: 'Images',
+            extensions: ['png', 'jpeg', 'jpg']
+        }]
+    })
+    console.log(target)
+    if (target == null) {
+        canQuit = true
+        return 0
+    }
+    const base64 = await invoke('read_png_as_base64', {filePath: target})
+    await writeTextFile(`icons\\${id}.txt`, base64, {dir: BaseDirectory.AppLocalData})
+    reload()
 }
 
-function deleteShortcut(target) {
-    if (target.classList[0] != 'icon' || target.classList[1] == 'safe') {
+async function deleteShortcut(target) {
+    if (target.classList[0] != 'icon' || target.classList[1] == 'safe' || target.classList[1] == 'nodelete') {
         target = target.parentNode
-        if (target.classList[0] != 'icon' || target.classList[1] == 'safe') return 0
+        if (target.classList[0] != 'icon' || target.classList[1] == 'safe' || target.classList[1] == 'nodelete') return 0
     }
+    let data = await getData()
     const ID = target.id
     const isID = (elem) => elem.id == ID;
-    const index = data.findIndex(isID)
-    data.splice(index, 1)
-    save()
-    target.remove()
+    const index = data.findIndex(isID);
+    data.splice(index, 1);
+    save(data);
+    remove(`items\\${ID}.lnk`, {baseDir: BaseDirectory.AppLocalData});
+    remove(`icons\\${ID}.txt`, {baseDir: BaseDirectory.AppLocalData});
+    target.remove();
 }
 
 document.addEventListener('keydown', (e)=>{
-    if (e.keyCode != 17) return 0
-    isCtrl = true
+    if (e.keyCode == 17) {
+        isCtrl = true;
+    } else if (e.keyCode == 27){
+        window.__TAURI__.window.getCurrentWindow().close();
+    }
+
 })
 
 document.addEventListener('keyup', (e)=>{
-    if (e.keyCode != 17) return 0
-    isCtrl = false
+    if (e.keyCode == 17) {
+        isCtrl = false;
+    }
+
 })
 
 document.addEventListener('contextmenu', (e)=>{
@@ -123,24 +195,18 @@ document.addEventListener('contextmenu', (e)=>{
     if (target.classList[0] != 'icon' || target.classList[1] == 'safe') {
         target = target.parentNode
         if (target.classList[0] != 'icon' || target.classList[1] == 'safe') return 0
-    } 
-    var input = document.createElement('input')
-    input.setAttribute('type', 'file')
-    input.setAttribute('accept', '.jpg, .jpeg, .png')
-    window.electron.ipcRenderer.send('cantQuit');
-    input.click()
-    input.addEventListener('change', ()=>{
-        const source = input.files[0].path
-        updateIcon(source, target.id)
-        input.remove()
-        window.electron.ipcRenderer.send('canQuit');
-    })
+    }
+
+    updateIcon(target.id)
 })
 
-async function getIconFromFile(iconPath) {
-    const base64 = await readFileSync(iconPath, {encoding: 'base64'})
-    const id = data[data.length-1].id
-    await writeFileSync(savesPath+`\\icons\\${id}.txt`, base64)
-    document.location.reload()
-} 
-load()
+//async function getIconFromFile() {
+//    const data = await getData()
+//    const id = data[data.length-1].id
+//    await writeTextFile(`icons\\${id}.txt`, defaultIcon, {dir: BaseDirectory.AppLocalData})
+//    document.location.reload()
+//}
+
+document.addEventListener("appReady", ()=> {
+    load();
+})

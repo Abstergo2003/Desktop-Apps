@@ -1,0 +1,53 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Capability for the main window",
+  "windows": [
+    "main",
+    "core"
+  ],
+  "permissions": [
+    "core:default",
+    "shell:allow-open",
+    "fs:default",
+    "fs:allow-write-text-file",
+    "fs:allow-app-write-recursive",
+    "fs:read-app-specific-dirs-recursive",
+    "dialog:default",
+    "core:window:allow-inner-size",
+    "core:window:allow-set-size",
+    "core:webview:allow-webview-size",
+    "core:webview:allow-set-webview-size",
+    "core:window:allow-set-size-constraints",
+    "cli:default",
+    "core:window:allow-close",
+    "fs:allow-write",
+    "shell:default",
+    {
+      "identifier": "shell:allow-execute",
+      "allow": [
+        {
+          "name": "extract-icon",
+          "cmd": "sh",
+          "args": true
+        }
+      ]
+    },
+    {
+      "identifier": "fs:allow-write",
+      "allow": [{"path": "**"}]
+    },
+    {
+      "identifier": "fs:allow-write-text-file",
+      "allow": [{"path": "**"}]
+    },
+    {
+      "identifier": "fs:allow-app-write-recursive",
+      "allow": [{"path": "**"}]
+    },
+    {
+      "identifier": "fs:read-app-specific-dirs-recursive",
+      "allow": [{ "path": "**" }]
+    }
+  ]
+}

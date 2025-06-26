@@ -1,19 +1,28 @@
+* {
+    font-family: inherit;
+    font-weight: inherit;
+}
 body {
-    background-size: 1920px;
     padding: 0;
     margin: 0;
     background-position: -100px -100px;
-    width: 0;
-    height: 0;
+    width: 590px;
+    height: 590px;
     transition: all .3s ease-in-out;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    font-family: 'Oxanium';
+    font-weight: 500;
+
 }
 .holder {
-    width: 790px;
-    height: 590px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     overflow-x: hidden;
     overflow-y: auto;
     padding: 5px;
@@ -23,6 +32,14 @@ body {
     display: flex;
     gap: 0;
     flex-flow: wrap;
+    backdrop-filter: blur(20px);
+    background-color: rgba(221, 217, 217, 0.1);
+    border-radius: 20px;
+}
+.iconHolder {
+    width: 120px;
+    height: 88px;
+    transition: all .3s ease-in-out;
 }
 .icon {
     width: 120px;
@@ -32,12 +49,45 @@ body {
     transition: all .2s ease-in-out;
     height: min-content;
     display: inline-block;
-    margin: 3px;
+    transform: translate(-50%, -50%);
     gap: 0;
     line-height: normal;
+    animation: iconShow .3s forwards;
+    margin-left: 60px;
+    margin-top: 44px;
+}
+@keyframes iconShow {
+    0% {
+        width: 20px;
+        height: 20px;
+    }
+    100% {
+        width: 120px;
+        height: 88px;
+    }
+}
+@keyframes iconIconShow {
+    0% {
+        width: 10px;
+        height: 10px;
+    }
+    100% {
+        width: 60px;
+        height: 60px;
+    }
+}
+@keyframes iconInputShow {
+    0% {
+        width: 10px;
+    }
+    100% {
+        width: calc(100% - 6px);
+    }
 }
 .icon img {
     width: 60px;
+    height: 60px;
+    animation: iconIconShow .3s forwards;
 }
 .icon input {
     font-size: 12px;
@@ -48,10 +98,103 @@ body {
     outline: none;
     border: none;
     width: calc(100% - 6px);
+    animation: iconInputShow .3s forwards;
+    transform: translateX(-50%);
+    margin-left: 50%;
 }
 .icon:hover {
     background-color: rgba(221, 217, 217, 0.1);
 }
 ::-webkit-scrollbar {
     display: none;
+}
+@keyframes leftTop {
+    0% {
+        top: 0;
+        left: 0;
+        bottom: 100vh;
+        right: 100vw;
+    }
+    75% {
+        top: 0;
+        left: 0;
+        bottom: 100vh;
+        right: 100vw;
+    }
+    100% {
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+}
+@keyframes leftBottom {
+    0% {
+        top: 100vh;
+        left: 0;
+        bottom: 0;
+        right: 100vw;
+    }
+    75% {
+        top: 100vh;
+        left: 0;
+        bottom: 0;
+        right: 100vw;
+    }
+    100% {
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+}
+@keyframes rightBottom {
+    0% {
+        top: 100vh;
+        left: 100vw;
+        bottom: 0;
+        right: 0;
+    }
+    75% {
+        top: 100vh;
+        left: 100vw;
+        bottom: 0;
+        right: 0;
+    }
+    100% {
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+}
+@keyframes rightTop {
+    0% {
+        top: 0;
+        left: 100vw;
+        bottom: 100vh;
+        right: 0;
+    }
+    75% {
+        top: 0;
+        left: 100vw;
+        bottom: 100vh;
+        right: 0;
+    }
+    100% {
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+}
+.shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    z-index: -1;
+    opacity: 0.1;
 }
